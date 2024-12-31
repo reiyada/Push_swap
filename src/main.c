@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2024/12/30 17:20:23 by ryada            ###   ########.fr       */
+/*   Updated: 2024/12/31 13:02:21 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,9 @@
 int main (int argc, char **argv)
 {
     t_stack *stack;
-    if (ft_check_argc(argc) == 0)
+    if (ft_error(argc, argv) == 0)
     {
-        ft_printf("Put more than 2 arguments!");
-        return (1);
-    }
-    if (ft_check_digit(argv) == 0)
-    {
-        ft_printf("Put only digits as arguments!");
-        return (1);
-    }
-    if (ft_check_range(argv) == 0)
-    {
-        ft_printf("Digit is too big or too small!");
+        ft_printf("Error\n");
         return (1);
     }
     stack = malloc(sizeof(t_stack));

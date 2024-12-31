@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2024/12/30 17:20:27 by ryada            ###   ########.fr       */
+/*   Updated: 2024/12/31 13:46:29 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@ void ft_free_stack(t_stack *stack);
 int ft_check_argc(int argc);
 int ft_check_digit(char **argv);
 int ft_check_range(char **argv);
+int ft_check_dup(char **argv);
+int ft_error(int argc, char **argv);
+
 
 #endif

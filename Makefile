@@ -3,62 +3,60 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ryada <ryada@student.42.fr>                +#+  +:+       +#+         #
+#    By: rei <rei@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 15:16:05 by ryada             #+#    #+#              #
-#    Updated: 2024/12/30 16:36:49 by ryada            ###   ########.fr        #
+#    Updated: 2024/12/31 13:52:35 by rei              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Project Name
+# Variables
 NAME = push_swap
+CC = gcc
+RM = rm -f
+FLAGS = -Wall -Wextra -Werror
+LIBFTDIR = libft/
+PRINTF_DIR = ft_printf/
+OBJ_DIR = obj/
+SRC_DIR = src/
 
-# Directories
-SRC_DIR = src
-INCLUDE_DIR = includes
-LIBFT_DIR = libft
-PRINTF_DIR = ft_printf
-BUILD_DIR = build
+SRC_FILES = main.c/
+			error.c/
+			push_stack.c/
+SRC_PATHS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
-# Source Files
-SRCS = $(wildcard $(SRC_DIR)/*.c)
-OBJS = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
-
-# Compiler and Flags
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE_DIR)
-
-# Libraries
-LIBFT = $(LIBFT_DIR)/libft.a
-PRINTF = $(PRINTF_DIR)/libftprintf.a
+INCLUDE = -I includes -L $(LIBFTDIR) -lft -L $(PRINTF_DIR) -lftprintf
 
 # Rules
-all: $(LIBFT) $(PRINTF) $(NAME)
+all: $(NAME)
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+# Target to create the binary
+$(NAME): $(OBJ_FILES)
+	@make -C $(LIBFTDIR)
+	@make -C $(PRINTF_DIR)
+	$(CC) $(FLAGS) $(OBJ_FILES) -o $(NAME) $(INCLUDE)
 
-$(PRINTF):
-	$(MAKE) -C $(PRINTF_DIR)
+# Rule to compile .c files into .o files, ensuring directories exist
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME): $(OBJS) $(LIBFT) $(PRINTF)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
-
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
+# Cleaning object files and libraries
 clean:
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(PRINTF_DIR) clean
-	rm -f $(BUILD_DIR)/*.o
-	rm -rf $(BUILD_DIR)
+	$(RM) $(OBJ_FILES)
+	@rm -rf $(OBJ_DIR)
+	@make clean -C $(LIBFTDIR)
+	@make clean -C $(PRINTF_DIR)
 
+# Cleaning everything including the binary
 fclean: clean
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(PRINTF_DIR) fclean
-	rm -f $(NAME)
+	$(RM) $(NAME)
+	@make fclean -C $(LIBFTDIR)
+	@make fclean -C $(PRINTF_DIR)
 
+# Rebuild everything from scratch
 re: fclean all
 
 .PHONY: all clean fclean re
+
