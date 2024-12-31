@@ -6,7 +6,7 @@
 #    By: rei <rei@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 15:16:05 by ryada             #+#    #+#              #
-#    Updated: 2024/12/31 13:54:55 by rei              ###   ########.fr        #
+#    Updated: 2024/12/31 13:56:13 by rei              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ PRINTF_DIR = ft_printf/
 OBJ_DIR = obj/
 SRC_DIR = src/
 
-SRC_FILES = main.c error.c push_stack.c
+SRC_FILES = main.c/
+			error.c/
+			push_stack.c
 SRC_PATHS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
