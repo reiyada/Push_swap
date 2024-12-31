@@ -6,7 +6,7 @@
 #    By: rei <rei@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 15:16:05 by ryada             #+#    #+#              #
-#    Updated: 2024/12/31 13:52:35 by rei              ###   ########.fr        #
+#    Updated: 2024/12/31 13:54:55 by rei              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,9 @@ PRINTF_DIR = ft_printf/
 OBJ_DIR = obj/
 SRC_DIR = src/
 
-SRC_FILES = main.c/
-			error.c/
-			push_stack.c/
+SRC_FILES = main.c error.c push_stack.c
 SRC_PATHS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
-OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
+OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
 INCLUDE = -I includes -L $(LIBFTDIR) -lft -L $(PRINTF_DIR) -lftprintf
 
@@ -38,7 +36,7 @@ $(NAME): $(OBJ_FILES)
 	$(CC) $(FLAGS) $(OBJ_FILES) -o $(NAME) $(INCLUDE)
 
 # Rule to compile .c files into .o files, ensuring directories exist
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(FLAGS) -c $< -o $@
 
@@ -59,4 +57,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
 
