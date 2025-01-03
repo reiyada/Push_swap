@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/02 15:59:29 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/03 15:10:40 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int ft_check_digit(char **argv);
 int ft_check_range(char **argv);
 int ft_check_dup(char **argv);
 int ft_error(int argc, char **argv);
-
+int ft_find_pivot(t_stack stack_a, int size);
+int ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int size);
 
 #endif

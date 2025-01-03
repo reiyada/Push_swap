@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 15:07:01 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/02 17:42:12 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/03 22:32:13 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int ft_find_pivot(t_stack stack_a, int size)
 
     temp = malloc(sizeof(int) * size);
     if (!temp)
-        return (NULL);
+        return (0);
     current = stack_a.top;
     i = 0;
     while (current && i < size)
@@ -43,3 +43,31 @@ int ft_find_pivot(t_stack stack_a, int size)
     return (pivot);
 }
 
+int ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int size)
+{
+    int pivot;
+    int count_smaller;
+    int i;
+    
+    pivot = ft_find_pivot(*stack_a, size);
+    ft_printf("Pivot: %d\n", pivot); //// delete this
+    i = 0;
+    while (i < size)
+    {
+        if(stack_a->top->value < pivot)
+        {
+            pb(stack_a, stack_b);
+            count_smaller++;
+        }
+        else
+            ra(stack_a);
+        i++;
+    }
+    i = 0;
+    while (i < size - count_smaller)
+    {
+        rra(stack_a);
+        i++;
+    }
+    return (count_smaller);
+}

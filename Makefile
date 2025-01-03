@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ryada <ryada@student.42.fr>                +#+  +:+       +#+         #
+#    By: rei <rei@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 17:05:33 by ryada             #+#    #+#              #
-#    Updated: 2025/01/02 17:06:59 by ryada            ###   ########.fr        #
+#    Updated: 2025/01/03 14:27:59 by rei              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ OBJ_DIR = obj/
 SRC_DIR = src/
 
 SRC_FILES = main.c \
-            error.c \
-            push_stack.c \
-            quick_sort.c
+			error.c \
+			push_stack.c \
+			quick_sort.c
 SRC_PATHS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
@@ -51,5 +51,3 @@ fclean: clean
 	@make fclean -C $(PRINTF_DIR)
 
 re: fclean all
-
-.PHONY: all clean fclean re
