@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rei <rei@student.42.fr>                    +#+  +:+       +#+         #
+#    By: ryada <ryada@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 17:05:33 by ryada             #+#    #+#              #
-#    Updated: 2025/01/03 14:27:59 by rei              ###   ########.fr        #
+#    Updated: 2025/01/04 17:47:35 by ryada            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,14 @@ PRINTF_DIR = ft_printf/
 OBJ_DIR = obj/
 SRC_DIR = src/
 
-SRC_FILES = main.c \
-			error.c \
+SRC_FILES = error.c \
+			main.c \
 			push_stack.c \
-			quick_sort.c
+			quick_sort.c \
+			rule_p.c \
+			rule_r.c \
+			rule_s.c \
+			
 SRC_PATHS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 

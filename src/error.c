@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:45:49 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/03 22:32:16 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/04 17:48:28 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 //No arguments provided
-int ft_check_argc(int argc)
-{
-    if (argc < 2)
-        return (0);
-    return (1);
-}
+// int ft_check_argc(int argc)
+// {
+//     if (argc < 2)
+//         return (0);
+//     return (1);
+// }
 
 //Non-integer arguments
 int ft_check_digit(char **argv)
@@ -102,11 +102,11 @@ int ft_check_dup(char **argv)
     return (1);
 }
 
-int ft_error(int argc, char **argv)
+int ft_error(char **argv)
 {
-    if (ft_check_argc(argc) == 0)
-        return (0);
-    else if (ft_check_digit(argv) == 0)
+    // if (ft_check_argc(argc) == 0)
+    //     return (0);
+    if (ft_check_digit(argv) == 0)
         return (0);
     else if (ft_check_range(argv) == 0)
         return (0);

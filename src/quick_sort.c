@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 15:07:01 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/03 22:32:13 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/04 17:53:33 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ int ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int size)
     int i;
     
     pivot = ft_find_pivot(*stack_a, size);
-    ft_printf("Pivot: %d\n", pivot); //// delete this
+    ft_printf("Pivot: %d\n", pivot); // delete this
     i = 0;
     while (i < size)
     {
         if(stack_a->top->value < pivot)
         {
-            pb(stack_a, stack_b);
+            pb(stack_b, stack_a);
             count_smaller++;
         }
         else

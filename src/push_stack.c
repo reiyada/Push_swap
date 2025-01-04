@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:43:19 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/03 22:32:12 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/04 17:52:07 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ void ft_push(t_stack *stack, int value, int to_top)
     stack->size++;
 }
 
-void ft_fill_stack(t_stack *stack, int argc, char **argv)
+void ft_fill_stack(t_stack *stack, int size, char **argv)
 {
     int i;
     int value;
     i = 1;
-    while (i < argc)
+    while (i < size)
     {
         value = ft_atoi(argv[i]);
         ft_push(stack, value, 0);
