@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:56:58 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/04 17:48:21 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/06 14:24:00 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void ra(t_stack *stack_a)
     stack_a->bottom->next = temp;
     stack_a->bottom = temp;
     temp->next = NULL; // same as stack_a->bottom->next = NULL but this is prefered
+    ft_printf("ra\n");
 }
 
 void rb(t_stack *stack_b)
@@ -37,12 +38,14 @@ void rb(t_stack *stack_b)
     stack_b->bottom->next = temp;
     stack_b->bottom = temp;
     temp->next = NULL;
+    ft_printf("rb\n");
 }
 
 void rr(t_stack *stack_a, t_stack *stack_b)
 {
     ra(stack_a);
     rb(stack_b);
+    ft_printf("rr\n");
 }
 
 //1 2 3 4 5 -> 5 1 2 3 4
@@ -64,6 +67,7 @@ void rra(t_stack *stack_a)
     current->next = stack_a->top; //connect the top of stack_a to the bottom
     stack_a->top = current; //update the new top
     stack_a->bottom = prev; //update the bttom
+    ft_printf("rra\n");
 }
 
 void rrb(t_stack *stack_b)
@@ -84,10 +88,12 @@ void rrb(t_stack *stack_b)
     current->next = stack_b->top; //connect the top of stack_b to the bottom
     stack_b->top = current; //update the new top
     stack_b->bottom = prev; //update the bttom
+    ft_printf("rrb\n");
 }
 
 void rrr(t_stack *stack_a, t_stack *stack_b)
 {
     ra(stack_a);
     rb(stack_b);
+    ft_printf("rrr\n");
 }

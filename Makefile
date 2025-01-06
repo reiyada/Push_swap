@@ -6,7 +6,7 @@
 #    By: ryada <ryada@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 17:05:33 by ryada             #+#    #+#              #
-#    Updated: 2025/01/04 17:47:35 by ryada            ###   ########.fr        #
+#    Updated: 2025/01/06 14:55:19 by ryada            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,10 @@ SRC_DIR = src/
 SRC_FILES = error.c \
 			main.c \
 			push_stack.c \
-			quick_sort.c \
 			rule_p.c \
 			rule_r.c \
 			rule_s.c \
-			
+			sort_small.c
 SRC_PATHS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 

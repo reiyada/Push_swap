@@ -6,12 +6,13 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:19:55 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/04 17:48:20 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/06 14:24:21 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+//1 2 3 4 5 -> 2 1 3 4 5
 void sa(t_stack *stack_a)
 {
     int temp;
@@ -24,8 +25,9 @@ void sa(t_stack *stack_a)
     temp = first->value;
     first->value = second->value;
     second->value = temp;
+    ft_printf("sa\n");
 }
-
+//1 2 3 4 5 -> 2 1 3 4 5
 void sb(t_stack *stack_b)
 {
     int temp;
@@ -38,10 +40,12 @@ void sb(t_stack *stack_b)
     temp = first->value;
     first->value = second->value;
     second->value = temp;
+    ft_printf("sb\n");
 }
 
 void ss(t_stack *stack_a, t_stack *stack_b)
 {
     sa(stack_a);
     sb(stack_b);
+    ft_printf("ss\n");
 }

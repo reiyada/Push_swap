@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:35:32 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/04 17:48:22 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/06 16:05:30 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void pa(t_stack *stack_a, t_stack *stack_b)
     stack_b->size--;
     temp->next = stack_a->top;
     stack_a->top = temp;
+    if (!stack_a->bottom)
+        stack_a->bottom = temp;
     stack_a->size++;
+    ft_printf("pa\n");
 }
 
 void pb(t_stack *stack_b, t_stack *stack_a)
@@ -39,5 +42,8 @@ void pb(t_stack *stack_b, t_stack *stack_a)
     stack_a->size--;
     temp->next = stack_b->top;
     stack_b->top = temp;
+    if (!stack_b->bottom)
+        stack_b->bottom = temp;
     stack_b->size++;
+    ft_printf("pb\n");
 }
