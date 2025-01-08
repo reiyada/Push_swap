@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:45:49 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/06 09:21:43 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/08 14:10:38 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,15 @@ int ft_check_range(char **argv)
 
 
 //Duplicate numbers
-int ft_check_dup(char **argv)
+int ft_check_dup(int argc, char **argv)
 {
     int i;
     int j;
 
-    i = 1;
+    if (argc > 2)
+        i = 1;
+    else if (argc == 2)
+        i = 0;
     while (argv[i])
     {
         j = i + 1;
@@ -94,8 +97,7 @@ int ft_check_dup(char **argv)
         {
             if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
                 return (0);
-            else
-                j++;
+            j++;
         }
         i++;
     }
@@ -110,7 +112,7 @@ int ft_error(int argc, char **argv)
         return (0);
     else if (ft_check_range(argv) == 0)
         return (0);
-    else if (ft_check_dup(argv) == 0)
+    else if (ft_check_dup(argc, argv) == 0)
         return (0);
     return (1);
 }

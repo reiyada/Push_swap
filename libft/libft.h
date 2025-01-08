@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:02:15 by ryada             #+#    #+#             */
-/*   Updated: 2024/11/14 10:23:39 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/08 13:47:58 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		ft_lstsize(t_list *lst);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
+size_t	ft_countword(char const *str, char sp);
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);

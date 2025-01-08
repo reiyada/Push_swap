@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/06 16:29:31 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/08 14:08:45 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int main (int argc, char **argv)
     t_stack *stack_a;
     t_stack *stack_b;
     char **tab;
-    int countstr;
+    // int countstr;
 
     stack_a = malloc(sizeof(t_stack));
     stack_b = malloc(sizeof(t_stack));
@@ -74,8 +74,8 @@ int main (int argc, char **argv)
         if (argc == 2)
         {
             tab = ft_split(argv[1], ' ');
-            countstr = ft_countstr(tab) + 1;
-            if (ft_error(countstr, tab) == 0)
+            // countstr = ft_countstr(tab) + 1;
+            if (ft_error(argc, tab) == 0)
             {
                 ft_printf("Error\n");
                 return (1);

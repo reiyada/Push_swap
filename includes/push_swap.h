@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/06 16:17:02 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/08 14:02:07 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ void rrb(t_stack *stack_b);
 void rrr(t_stack *stack_a, t_stack *stack_b);
 void ft_set_stack(t_stack *stack_a, t_stack *stack_b);
 void ft_sort_array(int *array, int size);
-void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int size);
+void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int count);
 
 int ft_check_argc(int argc);
 int ft_check_digit(char **argv);
 int ft_check_range(char **argv);
-int ft_check_dup(char **argv);
+int ft_check_dup(int argc, char **argv);
 int ft_error(int argc, char **argv);
 int ft_find_pivot(t_stack *stack_a, int size);
 int ft_countstr(char **tab);

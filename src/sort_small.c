@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:57:47 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/06 16:28:58 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/08 13:55:56 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,33 +60,56 @@ int ft_find_pivot(t_stack *stack_a, int size)
     return (pivot);
 }
 
-void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int size)
+
+void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int count)
 {
-    int pivot;
-    int count_smaller;
-    int i;
-    
-    pivot = ft_find_pivot(stack_a, size);
-    i = 0;
-    count_smaller = 0;
-    while (i < size)
+    int i = 0;
+
+    while (i < count)
     {
-        if(stack_a->top->value < pivot)
+        t_node *current = stack_a->top;
+        t_node *smallest = current;
+        int pos = 0;
+        int smallest_pos = 0;
+
+        // Find the smallest element in stack_a
+        while (current)
         {
-            pb(stack_b, stack_a);
-            count_smaller++;
+            if (current->value < smallest->value)
+            {
+                smallest = current;
+                smallest_pos = pos;
+            }
+            current = current->next;
+            pos++;
+        }
+
+        // Rotate or reverse rotate to bring the smallest element to the top
+        if (smallest_pos <= stack_a->size / 2)
+        {
+            int j = 0;
+            while (j < smallest_pos)
+            {
+                ra(stack_a);
+                j++;
+            }
         }
         else
-            ra(stack_a);
-        i++;
-    }
-    i = 0;
-    while (i < size - count_smaller)
-    {
-        rra(stack_a);
+        {
+            int j = 0;
+            while (j < stack_a->size - smallest_pos)
+            {
+                rra(stack_a);
+                j++;
+            }
+        }
+
+        // Push the smallest element to stack_b
+        pb(stack_b, stack_a);
         i++;
     }
 }
+
 
 t_stack *ft_sort_2(t_stack *stack_a)
 {
@@ -129,25 +152,19 @@ t_stack *ft_sort_4_5(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
     int size;
 
     if (argc == 2)
-        size = ft_countstr(argv);
+        size = ft_countword(argv[1], ' ');
     else if (argc > 2)
-        size = argc;
-    ft_move_to_stackb(stack_a, stack_b, size);
-    if (size == 5)
-    {
-        ft_sort_2(stack_a);
-        if (stack_b->top < stack_b->bottom)
-            sb(stack_b);
+        size = argc - 1;
+
+    if (size == 4)
+        ft_move_to_stackb(stack_a, stack_b, 1);
+    else if (size == 5)
+        ft_move_to_stackb(stack_a, stack_b, 2);
+    ft_sort_3(stack_a);
+    if (stack_b->size > 1 && stack_b->top->value < stack_b->top->next->value)
+        sb(stack_b);
+    while (stack_b->size > 0)
         pa(stack_a, stack_b);
-        pa(stack_a, stack_b);
-    }
-    else if (size == 6)
-    {
-        ft_sort_3(stack_a);
-        if (stack_b->top < stack_b->bottom)
-            sb(stack_b);
-        pa(stack_a, stack_b);
-        pa(stack_a, stack_b);
-    }
-    return (stack_a);
+    return stack_a;
 }
+
