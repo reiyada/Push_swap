@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/08 14:08:45 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/08 14:21:45 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,14 @@ int main (int argc, char **argv)
         {
             tab = ft_split(argv[1], ' ');
             // countstr = ft_countstr(tab) + 1;
-            if (ft_error(argc, tab) == 0)
+            if (ft_error(2, tab) == 0)
             {
                 ft_printf("Error\n");
+                ft_free_tab(tab);
                 return (1);
             }
             ft_push_stack(stack_a, stack_b, argc, tab);
+            ft_free_tab(tab);
         }
         else
         {
