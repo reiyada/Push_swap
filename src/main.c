@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/08 14:21:45 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/08 14:28:27 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void ft_push_stack(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
     ft_display_stack(stack_a, stack_b);
     ft_printf("--------------------------------------------\n");
     ft_printf ("The process\n");
-    ft_sort_4_5(stack_a, stack_b, argc, argv); //replace this with the sort function
+    ft_sort_4_5(stack_a, stack_b); //replace this with the sort function
     ft_printf("--------------------------------------------\n");
     ft_printf("After the move\n");
     ft_display_stack(stack_a, stack_b);

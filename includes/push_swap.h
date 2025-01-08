@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/08 14:14:32 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/08 14:28:25 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ int ft_countstr(char **tab);
 
 t_stack *ft_sort_2(t_stack *stack_a);
 t_stack *ft_sort_3(t_stack *stack_a);
-t_stack *ft_sort_4_5(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
+t_stack *ft_sort_4_5(t_stack *stack_a, t_stack *stack_b);
 
 #endif
