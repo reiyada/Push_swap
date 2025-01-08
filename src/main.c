@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/08 14:28:27 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/08 15:49:37 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@ void ft_set_stack(t_stack *stack_a, t_stack *stack_b)
     stack_b->size = 0;
 }
 
-void ft_push_stack(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
+void ft_push_swap(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 {
     ft_fill_stack(stack_a, argc, argv);
     ft_printf("Before the sort\n");
     ft_display_stack(stack_a, stack_b);
     ft_printf("--------------------------------------------\n");
     ft_printf ("The process\n");
+    if (stack_a->size == 2)
+        ft_sort_2(stack_a);
+    else if (stack_a->size == 3)
+        ft_sort_3(stack_a);
+    else if (stack_a->size == 4 || stack_a->size == 5)
     ft_sort_4_5(stack_a, stack_b); //replace this with the sort function
     ft_printf("--------------------------------------------\n");
     ft_printf("After the move\n");
@@ -81,7 +86,7 @@ int main (int argc, char **argv)
                 ft_free_tab(tab);
                 return (1);
             }
-            ft_push_stack(stack_a, stack_b, argc, tab);
+            ft_push_swap(stack_a, stack_b, argc, tab);
             ft_free_tab(tab);
         }
         else
@@ -91,7 +96,7 @@ int main (int argc, char **argv)
                 ft_printf("Error\n");
                 return (1);
             }
-            ft_push_stack(stack_a, stack_b, argc, argv);
+            ft_push_swap(stack_a, stack_b, argc, argv);
         }
     return (0);
 }
