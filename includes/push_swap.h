@@ -37,7 +37,7 @@ void ft_fill_stack(t_stack *stack_a, int argc, char **argv);
 void ft_display_stack(t_stack *stack_a, t_stack *stack_b);
 void ft_free_stack(t_stack *stack);
 void ft_free_tab(char **tab);
-void ft_push_stack(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
+void ft_push_swap(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
 void sa(t_stack *stack_a);
 void sb(t_stack *stack_b);
 void ss(t_stack *stack_a, t_stack *stack_b);

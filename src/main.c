@@ -53,7 +53,7 @@ void ft_push_swap(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
     else if (stack_a->size == 3)
         ft_sort_3(stack_a);
     else if (stack_a->size == 4 || stack_a->size == 5)
-    ft_sort_4_5(stack_a, stack_b); //replace this with the sort function
+        ft_sort_4_5(stack_a, stack_b); //replace this with the sort function
     ft_printf("--------------------------------------------\n");
     ft_printf("After the move\n");
     ft_display_stack(stack_a, stack_b);
