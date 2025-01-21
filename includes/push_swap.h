@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/08 14:28:25 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/21 17:42:01 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@ typedef struct s_node
 {
     struct s_node *next;
     int value;
+    int cost;
+    int index;
 }   t_node;
 
 typedef struct s_stack
 {
     t_node *top;
     t_node *bottom;
+    t_node *cheapest;
     int size;
 }   t_stack;
 
@@ -52,6 +55,9 @@ void rrr(t_stack *stack_a, t_stack *stack_b);
 void ft_set_stack(t_stack *stack_a, t_stack *stack_b);
 void ft_sort_array(int *array, int size);
 void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int count);
+void ft_count_cost_a(t_stack *stack_a);
+void ft_assign_index(t_stack *stack);
+void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b);
 
 int ft_check_argc(int argc);
 int ft_check_digit(int argc, char **argv);
@@ -60,7 +66,7 @@ int ft_check_dup(int argc, char **argv);
 int ft_error(int argc, char **argv);
 int ft_find_pivot(t_stack *stack_a, int size);
 int ft_countstr(char **tab);
-
+int ft_count_cost_b(t_stack *stack_b, int value_a);
 
 t_stack *ft_sort_2(t_stack *stack_a);
 t_stack *ft_sort_3(t_stack *stack_a);

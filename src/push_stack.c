@@ -6,11 +6,26 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:43:19 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/06 14:56:00 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/21 16:09:32 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void ft_assign_index(t_stack *stack)
+{
+    t_node *current;
+    int i;
+
+    i = 0;
+    current = stack->top;
+    while (current)
+    {
+        current->index = i;
+        i++;
+        current = current->next;
+    }
+}
 
 void ft_push(t_stack *stack, int value, int to_top)
 {
@@ -64,8 +79,8 @@ void ft_fill_stack(t_stack *stack_a, int argc, char **argv)
 
 void ft_display_stack(t_stack *stack_a, t_stack *stack_b)
 {
-    int i;
-    i = 0;
+    // int i;
+    // i = 0;
     t_node *current_a;
     t_node *current_b;
     current_a = stack_a->top;
@@ -73,21 +88,19 @@ void ft_display_stack(t_stack *stack_a, t_stack *stack_b)
     ft_printf("    A B\n");
     while(current_a || current_b)
     {
-        ft_printf("[%d] ", i);
         if (current_a)
         {
-            ft_printf("%d ", current_a->value);
+            ft_printf("[%d] %d",current_a->index, current_a->value);
             current_a = current_a->next;
         }
         else
             ft_printf("  "); //2 spaces
         if (current_b)
         {
-            ft_printf("%d", current_b->value);
+            ft_printf("[%d] %d", current_b->index, current_b->value);
             current_b = current_b->next;
         }
         ft_printf("\n");
-        i++;
     }
 }
 
