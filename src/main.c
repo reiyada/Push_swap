@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/21 17:43:21 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/21 22:28:14 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,14 @@ void ft_push_swap(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 
     // Step 2: Push 2 nodes from stack_a to stack_b
     ft_printf("Pushing 2 nodes to STACK_B:\n");
-    pb(stack_a, stack_b);
-    pb(stack_a, stack_b);
+    pb(stack_b, stack_a);
+    pb(stack_b, stack_a);
 
     // Step 3: Display the state after pushing 2 nodes
     ft_printf("\nAfter pushing 2 nodes to STACK_B:\n");
+    ft_assign_index(stack_a);
+    ft_assign_index(stack_b);
+    ft_assign_biggest_smallest(stack_b);
     ft_display_stack(stack_a, stack_b);
     ft_printf("--------------------------------------------\n");
 
@@ -136,7 +139,6 @@ int main (int argc, char **argv)
     t_stack *stack_a;
     t_stack *stack_b;
     char **tab;
-    // int countstr;
 
     stack_a = malloc(sizeof(t_stack));
     stack_b = malloc(sizeof(t_stack));
@@ -146,28 +148,27 @@ int main (int argc, char **argv)
         return (0);
     } //wanna put this in ft_set_stack but idk how
     ft_set_stack(stack_a, stack_b);
-        if (argc == 2)
+    if (argc == 2)
+    {
+        tab = ft_split(argv[1], ' ');
+        if (ft_error(2, tab) == 0)
         {
-            tab = ft_split(argv[1], ' ');
-            // countstr = ft_countstr(tab) + 1;
-            if (ft_error(2, tab) == 0)
-            {
-                ft_printf("Error\n");
-                ft_free_tab(tab);
-                return (1);
-            }
-            ft_push_swap(stack_a, stack_b, argc, tab);
+            ft_printf("Error\n");
             ft_free_tab(tab);
+            return (1);
         }
-        else
+        ft_push_swap(stack_a, stack_b, argc, tab);
+        ft_free_tab(tab);
+    }
+    else
+    {
+        if (ft_error(argc, argv) == 0)
         {
-            if (ft_error(argc, argv) == 0)
-            {
-                ft_printf("Error\n");
-                return (1);
-            }
-            ft_push_swap(stack_a, stack_b, argc, argv);
+            ft_printf("Error\n");
+            return (1);
         }
+        ft_push_swap(stack_a, stack_b, argc, argv);
+    }
     return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:43:19 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/21 16:09:32 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/21 22:32:51 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@ void ft_assign_index(t_stack *stack)
     {
         current->index = i;
         i++;
+        current = current->next;
+    }
+}
+
+void ft_assign_biggest_smallest(t_stack *stack_b)
+{
+    t_node *current;
+
+    current = stack_b->top;
+    stack_b->biggest = current;
+    stack_b->smallest = current;
+    while (current)
+    {
+        if (current->value > stack_b->biggest->value)
+            stack_b->biggest = current;
+        if (current->value < stack_b->smallest->value)
+            stack_b->smallest = current;
         current = current->next;
     }
 }

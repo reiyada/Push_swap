@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/21 17:42:01 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/21 23:14:18 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_stack
 {
     t_node *top;
     t_node *bottom;
+    t_node *biggest;
+    t_node *smallest;
     t_node *cheapest;
     int size;
 }   t_stack;
@@ -58,6 +60,8 @@ void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int count);
 void ft_count_cost_a(t_stack *stack_a);
 void ft_assign_index(t_stack *stack);
 void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b);
+void ft_assign_biggest_smallest(t_stack *stack_b);
+void ft_find_cheapest(t_stack *stack_a);
 
 int ft_check_argc(int argc);
 int ft_check_digit(int argc, char **argv);
