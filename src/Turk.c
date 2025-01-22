@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Turk.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:34:26 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/22 17:41:09 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/22 21:28:53 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,34 +67,77 @@ void ft_find_target_node(t_stack *stack_a, t_stack *stack_b)
 {
     t_node *current_a;
     t_node *current_b;
+    t_node *best_target;
 
     if (!stack_a || !stack_b || stack_b->size == 0)
-        return ;
+        return;
+
     current_a = stack_a->top;
     while (current_a)
     {
+        best_target = NULL;
+
         if (current_a->value < stack_b->smallest->value)
-            current_a->target = stack_b->smallest;
+            best_target = stack_b->smallest;
         else if (current_a->value > stack_b->biggest->value)
-            current_a->target = stack_b->biggest;
+            best_target = stack_b->smallest;
         else
         {
             current_b = stack_b->top;
             while (current_b)
             {
-                if (current_a->value > current_b->value && (!current_b->next || current_a->value < current_b->next->value))
+                if (current_a->value > current_b->value &&
+                    (!current_b->next || current_a->value < current_b->next->value))
                 {
-                    current_a->target = current_b->next;
+                    best_target = current_b->next;
                     break;
                 }
                 current_b = current_b->next;
             }
         }
-        if (!current_a->target)
-            current_a->target = stack_b->top;
+
+        if (!best_target)
+            best_target = stack_b->top;
+
+        current_a->target = best_target;
         current_a = current_a->next;
     }
 }
+
+
+
+// void ft_find_target_node(t_stack *stack_a, t_stack *stack_b)
+// {
+//     t_node *current_a;
+//     t_node *current_b;
+
+//     if (!stack_a || !stack_b || stack_b->size == 0)
+//         return ;
+//     current_a = stack_a->top;
+//     while (current_a)
+//     {
+//         if (current_a->value < stack_b->smallest->value)
+//             current_a->target = stack_b->smallest;
+//         else if (current_a->value > stack_b->biggest->value)
+//             current_a->target = stack_b->biggest;
+//         else
+//         {
+//             current_b = stack_b->top;
+//             while (current_b)
+//             {
+//                 if (current_a->value > current_b->value && (!current_b->next || current_a->value < current_b->next->value))
+//                 {
+//                     current_a->target = current_b->next;
+//                     break;
+//                 }
+//                 current_b = current_b->next;
+//             }
+//         }
+//         if (!current_a->target)
+//             current_a->target = stack_b->top;
+//         current_a = current_a->next;
+//     }
+// }
 
 //maybe it will be better if I make another function to find the target
 // int ft_count_cost_b(t_stack *stack_b, int value_a)
@@ -155,6 +198,7 @@ void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b)
     t_node *current_a;
     int cost_a;
     int cost_b;
+
     if (!stack_a || !stack_b)
         return;
     current_a = stack_a->top;
@@ -162,10 +206,15 @@ void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b)
     while (current_a)
     {
         cost_a = current_a->cost;
+        ft_find_target_node(stack_a, stack_b);
         cost_b = ft_count_cost_b(current_a, stack_b);
         current_a->cost = cost_a + cost_b;
         // ft_printf("Node Value: %d, Cost_a: %d, Cost_b: %d, Total cost: %d\n",
         // current_a->value, cost_a, cost_b, current_a->cost); //delete this
+        ft_printf("Node: %d, Cost: %d, Target: %d\n",
+            current_a->value,
+            current_a->cost,
+            current_a->target ? current_a->target->value : -1);//DELETE
         current_a = current_a->next;
     }
 }
@@ -188,13 +237,36 @@ void ft_find_cheapest(t_stack *stack_a)
     stack_a->cheapest = cheapest;
 }
 
+// void ft_target_to_top(t_stack *stack_b, t_node *target)
+// {
+//     int forward_cost;
+//     int reverse_cost;
+
+//     forward_cost = target->index;
+//     reverse_cost = stack_b->size - target->index;
+//     if (forward_cost < reverse_cost)
+//     {
+//         while (forward_cost--)
+//             rb(stack_b);
+//     }
+//     else
+//     {
+//         while (reverse_cost--)
+//             rrb(stack_b);
+//     }
+// }
+
 void ft_target_to_top(t_stack *stack_b, t_node *target)
 {
-    int forward_cost;
-    int reverse_cost;
+    if (!stack_b || !target)
+    {
+        ft_printf("Error: Invalid stack or target.\n");
+        return;
+    }
 
-    forward_cost = target->index;
-    reverse_cost = stack_b->size - target->index;
+    int forward_cost = target->index;
+    int reverse_cost = stack_b->size - target->index;
+
     if (forward_cost < reverse_cost)
     {
         while (forward_cost--)
@@ -204,6 +276,26 @@ void ft_target_to_top(t_stack *stack_b, t_node *target)
     {
         while (reverse_cost--)
             rrb(stack_b);
+    }
+}
+
+
+void ft_cheapest_to_top(t_stack *stack_a)
+{
+    int forward_cost;
+    int reverse_cost;
+
+    forward_cost = stack_a->cheapest->index;
+    reverse_cost = stack_a->size - stack_a->cheapest->index;
+    if (forward_cost < reverse_cost)
+    {
+        while (forward_cost--)
+            rb(stack_a);
+    }
+    else
+    {
+        while (reverse_cost--)
+            rrb(stack_a);
     }
 }
 
@@ -237,6 +329,47 @@ void ft_sort_stack_a(t_stack *stack_a, t_stack *stack_b)
     while (stack_a->top < stack_b->top)
         ra(stack_a);
 }
+
+int ft_is_sorted(t_stack *stack_a)
+{
+    t_node *current;
+
+    if (!stack_a || !stack_a->top) 
+        return (1);
+    current = stack_a->top;
+    while (current->next)
+    {
+        if (current->value > current->next->value)
+            return (0);
+        current = current->next;
+    }
+    return (1);
+}
+
+void ft_rotate_to_sorted(t_stack *stack_a)
+{
+    int smallest_index;
+
+    if (!stack_a || stack_a->size < 2)
+        return;
+
+    // Find the index of the smallest node
+    ft_assign_biggest_smallest(stack_a);
+    smallest_index = stack_a->smallest->index;
+
+    // Rotate or reverse rotate to bring smallest to the top
+    if (smallest_index <= stack_a->size / 2)
+    {
+        while (stack_a->top != stack_a->smallest)
+            ra(stack_a);
+    }
+    else
+    {
+        while (stack_a->top != stack_a->smallest)
+            rra(stack_a);
+    }
+}
+
 
 // t_stack *ft_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 // {

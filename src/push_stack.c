@@ -6,7 +6,7 @@
 /*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:43:19 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/21 22:32:51 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/22 21:23:10 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,46 @@ void ft_assign_index(t_stack *stack)
     }
 }
 
-void ft_assign_biggest_smallest(t_stack *stack_b)
-{
-    t_node *current;
+// void ft_assign_biggest_smallest(t_stack *stack_b)
+// {
+//     t_node *current;
 
-    current = stack_b->top;
-    stack_b->biggest = current;
-    stack_b->smallest = current;
+//     current = stack_b->top;
+//     stack_b->biggest = current;
+//     stack_b->smallest = current;
+//     while (current)
+//     {
+//         if (current->value > stack_b->biggest->value)
+//             stack_b->biggest = current;
+//         if (current->value < stack_b->smallest->value)
+//             stack_b->smallest = current;
+//         current = current->next;
+//     }
+// }
+
+void ft_assign_biggest_smallest(t_stack *stack)
+{
+    if (!stack || !stack->top)
+        return;
+
+    t_node *current = stack->top;
+    stack->biggest = current;
+    stack->smallest = current;
+
     while (current)
     {
-        if (current->value > stack_b->biggest->value)
-            stack_b->biggest = current;
-        if (current->value < stack_b->smallest->value)
-            stack_b->smallest = current;
+        if (current->value > stack->biggest->value)
+            stack->biggest = current;
+        if (current->value < stack->smallest->value)
+            stack->smallest = current;
         current = current->next;
     }
+
+    ft_printf("Biggest: %d, Smallest: %d\n",
+              stack->biggest->value,
+              stack->smallest->value);
 }
+
 
 void ft_push(t_stack *stack, int value, int to_top)
 {

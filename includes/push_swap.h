@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/22 17:40:56 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/22 21:32:40 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void ft_fill_stack(t_stack *stack_a, int argc, char **argv);
 void ft_display_stack(t_stack *stack_a, t_stack *stack_b);
 void ft_free_stack(t_stack *stack);
 void ft_free_tab(char **tab);
-void ft_push_swap(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
+void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
 void sa(t_stack *stack_a);
 void sb(t_stack *stack_b);
 void ss(t_stack *stack_a, t_stack *stack_b);
@@ -67,6 +67,8 @@ void ft_find_target_node(t_stack *stack_a, t_stack *stack_b);
 void ft_target_to_top(t_stack *stack_b, t_node *target);
 void ft_sort_stack_b(t_stack *stack_b);
 void ft_sort_stack_a(t_stack *stack_a, t_stack *stack_b);
+void ft_cheapest_to_top(t_stack *stack_a);
+void ft_rotate_to_sorted(t_stack *stack_a);
 
 int ft_check_argc(int argc);
 int ft_check_digit(int argc, char **argv);
@@ -76,6 +78,7 @@ int ft_error(int argc, char **argv);
 int ft_find_pivot(t_stack *stack_a, int size);
 int ft_countstr(char **tab);
 int ft_count_cost_b(t_node *current_a, t_stack *stack_b);
+int ft_is_sorted(t_stack *stack_a);
 
 t_stack *ft_sort_2(t_stack *stack_a);
 t_stack *ft_sort_3(t_stack *stack_a);
