@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:57:47 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/08 14:32:06 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/22 14:44:04 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int count)
         i++;
     }
 }
-
 
 t_stack *ft_sort_2(t_stack *stack_a)
 {

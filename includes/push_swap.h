@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/21 23:14:18 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/22 17:40:56 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct s_node
 {
     struct s_node *next;
+    struct s_node *target;
     int value;
     int cost;
     int index;
@@ -62,6 +63,10 @@ void ft_assign_index(t_stack *stack);
 void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b);
 void ft_assign_biggest_smallest(t_stack *stack_b);
 void ft_find_cheapest(t_stack *stack_a);
+void ft_find_target_node(t_stack *stack_a, t_stack *stack_b);
+void ft_target_to_top(t_stack *stack_b, t_node *target);
+void ft_sort_stack_b(t_stack *stack_b);
+void ft_sort_stack_a(t_stack *stack_a, t_stack *stack_b);
 
 int ft_check_argc(int argc);
 int ft_check_digit(int argc, char **argv);
@@ -70,7 +75,7 @@ int ft_check_dup(int argc, char **argv);
 int ft_error(int argc, char **argv);
 int ft_find_pivot(t_stack *stack_a, int size);
 int ft_countstr(char **tab);
-int ft_count_cost_b(t_stack *stack_b, int value_a);
+int ft_count_cost_b(t_node *current_a, t_stack *stack_b);
 
 t_stack *ft_sort_2(t_stack *stack_a);
 t_stack *ft_sort_3(t_stack *stack_a);

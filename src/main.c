@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/21 22:28:14 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/22 17:39:55 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void ft_set_stack(t_stack *stack_a, t_stack *stack_b)
 
 void ft_push_swap(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 {
+    t_node *current;
     // Step 1: Fill and assign indexes
     ft_fill_stack(stack_a, argc, argv);
     ft_assign_index(stack_a);
@@ -119,16 +120,67 @@ void ft_push_swap(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
     ft_display_stack(stack_a, stack_b);
     ft_printf("--------------------------------------------\n");
 
-    // Step 4: Calculate and display total costs for stack_a
-    ft_printf("\nCalculating total costs for STACK_A:\n");
+    // Step 4: Display the stack to verify costs
     ft_calculate_total_cost(stack_a, stack_b); // Calculates total cost for each node in stack_a
-
-    // Step 5: Display the stack to verify costs
     ft_printf("\nStack A with Total Costs:\n");
-    ft_display_stack(stack_a, stack_b);
+    current = stack_a->top;
+    while (current)
+    {
+        ft_printf("[%d]%d: (cost)%d\n", current->index, current->value,current->cost);
+        current = current->next;
+    }
     ft_printf("--------------------------------------------\n");
 
-    // Free the stacks
+    // Step 5: Find the cheapest of all the nodes of stack_a
+    ft_find_cheapest(stack_a);
+    ft_printf("The cheapest: [%d] %d\n", stack_a->cheapest->index, stack_a->cheapest->value);
+    ft_printf("--------------------------------------------\n");
+
+    // Step 6: Push the target node of stack_b to the top of stack_b
+    while (stack_a->size > 3)
+    {
+        ft_find_target_node(stack_a, stack_b); // Assign target nodes for all nodes in stack_a
+
+        ft_find_cheapest(stack_a); // Find the cheapest node in stack_a
+        t_node *cheapest = stack_a->cheapest;
+
+        // Push the target node of the cheapest node in stack_b to the top
+        ft_target_to_top(stack_b, cheapest->target);
+        ft_assign_index(stack_a);
+        ft_assign_index(stack_b);
+        ft_display_stack(stack_a, stack_b);
+        ft_printf("--------------------------------------------\n");
+        // Push the cheapest node from stack_a to stack_b
+        pb(stack_b, stack_a);
+        ft_assign_index(stack_a);
+        ft_assign_index(stack_b);
+        ft_display_stack(stack_a, stack_b);
+        ft_printf("--------------------------------------------\n");
+        
+    }
+    // Step 7: Sort stack_b into the deescalating order
+    // ft_sort_stack_b(stack_b);
+    ft_assign_index(stack_a);
+    ft_assign_index(stack_b);
+    ft_display_stack(stack_a, stack_b);
+    ft_printf("--------------------------------------------\n");
+    // Step 8: Srot stack_a into the escalating order
+    ft_sort_3(stack_a);
+    ft_assign_index(stack_a);
+    ft_assign_index(stack_b);
+    ft_display_stack(stack_a, stack_b);
+    ft_printf("--------------------------------------------\n");
+    // Step 9: Push all nodes back to stack_a
+    while (stack_b->size > 0)
+    {
+        ft_sort_stack_a(stack_a, stack_b);
+        pa(stack_a, stack_b);
+        ft_assign_index(stack_a);
+        ft_assign_index(stack_b);
+        ft_display_stack(stack_a, stack_b);
+        ft_printf("--------------------------------------------\n");
+    }
+    // Step 10: Free the stacks
     ft_free_stack(stack_a);
     ft_free_stack(stack_b);
 }
