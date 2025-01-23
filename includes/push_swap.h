@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/23 14:07:45 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/23 19:59:59 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_stack
     t_node *cheapest;
     int size;
 }   t_stack;
+
 
 void ft_push(t_stack *stack, int value, int to_top);
 void ft_fill_stack(t_stack *stack_a, int argc, char **argv);
@@ -72,6 +73,7 @@ void ft_sort_stack_a(t_stack *stack_a, t_stack *stack_b);
 void ft_cheapest_to_top(t_stack *stack_a);
 void ft_rotate_to_sorted(t_stack *stack_a);
 
+void ft_set_top_bottom(t_stack *stack_a);
 int ft_check_argc(int argc);
 int ft_check_digit(int argc, char **argv);
 int ft_check_range(char **argv);
@@ -85,5 +87,9 @@ int ft_is_sorted(t_stack *stack_a);
 t_stack *ft_sort_2(t_stack *stack_a);
 t_stack *ft_sort_3(t_stack *stack_a);
 t_stack *ft_sort_4_5(t_stack *stack_a, t_stack *stack_b);
+
+void increment_operation_count(void);
+int get_operation_count(void);
+void reset_operation_count(void);
 
 #endif

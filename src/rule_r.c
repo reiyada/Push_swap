@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rule_r.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:56:58 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/23 14:00:51 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/23 19:53:35 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void ft_top_to_bottom(t_stack *stack)
     stack->bottom->next = temp;
     stack->bottom = temp;
     temp->next = NULL;
+    increment_operation_count();
 }
 
 //1 2 3 4 5 -> 2 3 4 5 1
@@ -121,7 +122,7 @@ void rrb(t_stack *stack_b, bool print)
 
 void rrr(t_stack *stack_a, t_stack *stack_b)
 {
-    ra(stack_a, true);
-    rb(stack_b, true);
+    rra(stack_a, true);
+    rrb(stack_b, true);
     ft_printf("rrr\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rule_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:35:32 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/06 16:05:30 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/23 19:52:31 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void pa(t_stack *stack_a, t_stack *stack_b)
         stack_a->bottom = temp;
     stack_a->size++;
     ft_printf("pa\n");
+    increment_operation_count();
 }
 
 void pb(t_stack *stack_b, t_stack *stack_a)
@@ -46,4 +47,5 @@ void pb(t_stack *stack_b, t_stack *stack_a)
         stack_b->bottom = temp;
     stack_b->size++;
     ft_printf("pb\n");
+    increment_operation_count();
 }
