@@ -47,8 +47,13 @@ void rr(t_stack *stack_a, t_stack *stack_b)
     rb(stack_b);
     ft_printf("rr\n");
 }
-
+//GOAL
 //1 2 3 4 5 -> 5 1 2 3 4
+
+//2 3 4 5 1
+//3 4 5 1 2
+//4 5 1 2 3
+//5 1 2 3 4
 void rra(t_stack *stack_a)
 {
     t_node *current;

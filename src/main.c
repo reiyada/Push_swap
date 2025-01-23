@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/22 21:32:25 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/23 13:19:37 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,8 @@ int main (int argc, char **argv)
         }
         ft_push_swap_turk(stack_a, stack_b, argc, argv);
     }
+    ft_free_stack(stack_a);
+    ft_free_stack(stack_b);
     return (0);
 }
 
@@ -263,11 +265,11 @@ void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv
     }
     ft_assign_index(stack_a);
     
-    // if (ft_is_sorted(stack_a))
-    // {
-    //     ft_printf("The input stack is already sorted.\n"); //DELETE
-    //     return ;
-    // }
+    if (ft_is_sorted(stack_a))
+    {
+        ft_printf("The input stack is already sorted.\n"); //DELETE
+        return ;
+    }
     ft_display_stack(stack_a, stack_b);
     ft_printf("--------------------------------------------\n");
 
@@ -280,16 +282,25 @@ void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv
     ft_printf("--------------------------------------------\n");
 
     //[3]Push the cheapest node of stack_a to stack_b
-    while (stack_a->size > 3)
+    while (stack_a->size > 0)
     {
+        printf("1\n");
         ft_find_target_node(stack_a, stack_b);
-        if (!stack_a->cheapest->target)
-        {
-            ft_printf("Error: Target node for cheapest is NULL.\n");
-            return;
-        }
+        // if (!stack_a->cheapest->target)
+        // {
+        //     ft_printf("Error: Target node for cheapest is NULL.\n");
+        //     return;
+        // }
+        // t_node *current_a = stack_a->top;
+        // while (current_a)
+        // {
+        //     printf("Target of %d is %d\n", current_a->value, current_a->target->value);
+        //     current_a = current_a->next;
+        // }
+        
         ft_calculate_total_cost(stack_a, stack_b);
         ft_find_cheapest(stack_a);
+        printf("2\n");
         ft_printf("\nCheapest is :[%d]%d with the cost of %d\n\n", stack_a->cheapest->index, stack_a->cheapest->value, stack_a->cheapest->cost);
         if (!stack_a->cheapest)
         {
@@ -301,19 +312,22 @@ void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv
             ft_printf("Error: Target node for cheapest is NULL.\n");
             return;
         }
+        printf("3\n");
         ft_target_to_top(stack_b, stack_a->cheapest->target);
         ft_display_stack(stack_a, stack_b);
         ft_printf("--------------------------------------------\n");
+        printf("4\n");
         ft_cheapest_to_top(stack_a);
         ft_display_stack(stack_a, stack_b);
         ft_printf("--------------------------------------------\n");
+        printf("5\n");
         pb(stack_b, stack_a);
         ft_assign_index(stack_a);
         ft_assign_index(stack_b);
     }
-    ft_sort_3(stack_a);
-    ft_display_stack(stack_a, stack_b);
-    ft_printf("--------------------------------------------\n");
+    // ft_sort_3(stack_a);
+    // ft_display_stack(stack_a, stack_b);
+    // ft_printf("--------------------------------------------\n");
 
     //[4]Push back nodes of stack_b to stack_a
     while (stack_b->size > 0)
@@ -349,7 +363,5 @@ void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv
     }
     ft_display_stack(stack_a, stack_b);
     ft_printf("--------------------------------------------\n");
-    ft_free_stack(stack_a);
-    ft_free_stack(stack_b);
 }
 

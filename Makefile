@@ -6,14 +6,14 @@
 #    By: ryada <ryada@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 17:05:33 by ryada             #+#    #+#              #
-#    Updated: 2025/01/21 15:33:51 by ryada            ###   ########.fr        #
+#    Updated: 2025/01/23 10:43:31 by ryada            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
 RM = rm -f
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 LIBFTDIR = libft/
 PRINTF_DIR = ft_printf/
 OBJ_DIR = obj/

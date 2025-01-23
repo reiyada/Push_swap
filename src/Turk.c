@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Turk.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:34:26 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/22 21:28:53 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/23 10:03:53 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,35 +71,40 @@ void ft_find_target_node(t_stack *stack_a, t_stack *stack_b)
 
     if (!stack_a || !stack_b || stack_b->size == 0)
         return;
-
     current_a = stack_a->top;
+    //printf("TOP A%d\n", current_a->value);
+    ft_assign_biggest_smallest(stack_b);
     while (current_a)
     {
-        best_target = NULL;
-
         if (current_a->value < stack_b->smallest->value)
+        {
+            // printf("Smaller than all \n");
             best_target = stack_b->smallest;
+        }
         else if (current_a->value > stack_b->biggest->value)
-            best_target = stack_b->smallest;
+        {
+            // printf("bigger than all\n");
+            best_target = stack_b->biggest;
+        }
         else
         {
+            // printf("in between\n");
             current_b = stack_b->top;
             while (current_b)
             {
                 if (current_a->value > current_b->value &&
                     (!current_b->next || current_a->value < current_b->next->value))
                 {
-                    best_target = current_b->next;
+                    best_target = current_b;
                     break;
                 }
                 current_b = current_b->next;
             }
         }
-
         if (!best_target)
             best_target = stack_b->top;
-
         current_a->target = best_target;
+        // printf("Target of %d is %d\n", current_a->value, current_a->target->value);
         current_a = current_a->next;
     }
 }
@@ -211,10 +216,10 @@ void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b)
         current_a->cost = cost_a + cost_b;
         // ft_printf("Node Value: %d, Cost_a: %d, Cost_b: %d, Total cost: %d\n",
         // current_a->value, cost_a, cost_b, current_a->cost); //delete this
-        ft_printf("Node: %d, Cost: %d, Target: %d\n",
-            current_a->value,
-            current_a->cost,
-            current_a->target ? current_a->target->value : -1);//DELETE
+        // ft_printf("Node: %d, Cost: %d, Target: %d\n",
+        //     current_a->value,
+        //     current_a->cost,
+        //     current_a->target ? current_a->target->value : -1);//DELETE
         current_a = current_a->next;
     }
 }

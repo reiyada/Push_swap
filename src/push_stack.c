@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:43:19 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/22 21:23:10 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/23 09:30:46 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,9 @@ void ft_assign_biggest_smallest(t_stack *stack)
             stack->smallest = current;
         current = current->next;
     }
-
-    ft_printf("Biggest: %d, Smallest: %d\n",
-              stack->biggest->value,
-              stack->smallest->value);
+    // ft_printf("Biggest: %d, Smallest: %d\n",
+    //           stack->biggest->value,
+    //           stack->smallest->value);
 }
 
 
