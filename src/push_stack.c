@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:43:19 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/23 09:30:46 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/23 15:13:48 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,9 @@ void ft_free_stack(t_stack *stack)
 {
     t_node *current;
     t_node *temp;
+
+    if (!stack)
+        return;
     current  = stack->top;
     while (current)
     {
