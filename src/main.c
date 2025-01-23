@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/23 13:19:37 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/23 14:03:23 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,6 +253,9 @@ int main (int argc, char **argv)
     return (0);
 }
 
+
+
+//GOOD ONE//
 void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 {
     //[1]Initialize the input
@@ -336,12 +339,12 @@ void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv
         if (stack_b->biggest->index <= stack_b->size / 2)
         {
             while (stack_b->top != stack_b->biggest)
-                rb(stack_b);
+                rb(stack_b, false);
         }
         else
         {
             while (stack_b->top != stack_b->biggest)
-                rrb(stack_b);
+                rrb(stack_b, false);
         }
         pa(stack_a, stack_b);
         ft_assign_index(stack_a);
@@ -354,12 +357,12 @@ void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv
     if (stack_a->smallest->index <= stack_a->size / 2)
     {
         while (stack_a->top != stack_a->smallest)
-            ra(stack_a);
+            ra(stack_a, false);
     }
     else
     {
         while (stack_a->top != stack_a->smallest)
-            rra(stack_a);
+            rra(stack_a, false);
     }
     ft_display_stack(stack_a, stack_b);
     ft_printf("--------------------------------------------\n");

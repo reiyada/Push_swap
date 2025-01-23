@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/22 21:32:40 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/23 14:07:45 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "../ft_printf/includes/ft_printf.h"
 #include "../libft/libft.h"
 
@@ -44,16 +45,17 @@ void ft_display_stack(t_stack *stack_a, t_stack *stack_b);
 void ft_free_stack(t_stack *stack);
 void ft_free_tab(char **tab);
 void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
-void sa(t_stack *stack_a);
-void sb(t_stack *stack_b);
+void sa(t_stack *stack_a, bool print);
+void sb(t_stack *stack_b, bool print);
 void ss(t_stack *stack_a, t_stack *stack_b);
 void pa(t_stack *stack_a, t_stack *stack_b);
 void pb(t_stack *stack_b, t_stack *stack_a);
-void ra(t_stack *stack_a);
-void rb(t_stack *stack_b);
+void ft_top_to_bottom(t_stack *stack);
+void ra(t_stack *stack_a, bool print);
+void rb(t_stack *stack_b, bool print);
 void rr(t_stack *stack_a, t_stack *stack_b);
-void rra(t_stack *stack_a);
-void rrb(t_stack *stack_b);
+void rra(t_stack *stack_a, bool print);
+void rrb(t_stack *stack_b, bool print);
 void rrr(t_stack *stack_a, t_stack *stack_b);
 void ft_set_stack(t_stack *stack_a, t_stack *stack_b);
 void ft_sort_array(int *array, int size);

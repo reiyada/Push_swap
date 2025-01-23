@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:34:26 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/23 10:03:53 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/23 14:05:26 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,12 +275,12 @@ void ft_target_to_top(t_stack *stack_b, t_node *target)
     if (forward_cost < reverse_cost)
     {
         while (forward_cost--)
-            rb(stack_b);
+            rb(stack_b, false);
     }
     else
     {
         while (reverse_cost--)
-            rrb(stack_b);
+            rrb(stack_b, false);
     }
 }
 
@@ -295,12 +295,12 @@ void ft_cheapest_to_top(t_stack *stack_a)
     if (forward_cost < reverse_cost)
     {
         while (forward_cost--)
-            rb(stack_a);
+            rb(stack_a, false);
     }
     else
     {
         while (reverse_cost--)
-            rrb(stack_a);
+            rrb(stack_a, false);
     }
 }
 
@@ -320,7 +320,7 @@ void ft_sort_stack_b(t_stack *stack_b)
         {
             if (current->value < current->next->value)
             {
-                rb(stack_b);
+                rb(stack_b, false);
                 sorted = 0;
                 break;
             }
@@ -332,7 +332,7 @@ void ft_sort_stack_b(t_stack *stack_b)
 void ft_sort_stack_a(t_stack *stack_a, t_stack *stack_b)
 {
     while (stack_a->top < stack_b->top)
-        ra(stack_a);
+        ra(stack_a, false);
 }
 
 int ft_is_sorted(t_stack *stack_a)
@@ -366,12 +366,12 @@ void ft_rotate_to_sorted(t_stack *stack_a)
     if (smallest_index <= stack_a->size / 2)
     {
         while (stack_a->top != stack_a->smallest)
-            ra(stack_a);
+            ra(stack_a, false);
     }
     else
     {
         while (stack_a->top != stack_a->smallest)
-            rra(stack_a);
+            rra(stack_a, false);
     }
 }
 

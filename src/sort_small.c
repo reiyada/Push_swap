@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:57:47 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/22 14:44:04 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/23 14:10:05 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int count)
             int j = 0;
             while (j < smallest_pos)
             {
-                ra(stack_a);
+                ra(stack_a, false);
                 j++;
             }
         }
@@ -99,7 +99,7 @@ void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int count)
             int j = 0;
             while (j < stack_a->size - smallest_pos)
             {
-                rra(stack_a);
+                rra(stack_a, false);
                 j++;
             }
         }
@@ -113,7 +113,7 @@ void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int count)
 t_stack *ft_sort_2(t_stack *stack_a)
 {
     if (stack_a->top->value > stack_a->bottom->value)
-        sa(stack_a);
+        sa(stack_a, false);
     return (stack_a);
 }
 
@@ -129,19 +129,19 @@ t_stack *ft_sort_3(t_stack *stack_a)
     
     if (first < second && second > third && first < third)
     {
-        rra(stack_a);
-        sa(stack_a);
+        rra(stack_a, false);
+        sa(stack_a, false);
     }
     else if (first > second && second < third && first < third)
-        sa(stack_a);
+        sa(stack_a, false);
     else if (first < second && second > third && first > third)
-        rra(stack_a);
+        rra(stack_a, false);
     else if (first > second && second < third && first > third)
-        ra(stack_a);
+        ra(stack_a, false);
     else if (first > second && second > third)
     {
-        ra(stack_a);
-        sa(stack_a);
+        ra(stack_a, false);
+        sa(stack_a, false);
     }
     return (stack_a);
 }
@@ -178,7 +178,7 @@ t_stack *ft_sort_4_5(t_stack *stack_a, t_stack *stack_b)
         ft_move_to_stackb(stack_a, stack_b, 2);
     ft_sort_3(stack_a);
     if (stack_b->size > 1 && stack_b->top->value < stack_b->top->next->value)
-        sb(stack_b);
+        sb(stack_b, false);
     while (stack_b->size > 0)
         pa(stack_a, stack_b);
     return stack_a;
