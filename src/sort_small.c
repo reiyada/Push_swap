@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:57:47 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/23 14:10:05 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/24 12:05:25 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,33 +117,44 @@ t_stack *ft_sort_2(t_stack *stack_a)
     return (stack_a);
 }
 
-t_stack *ft_sort_3(t_stack *stack_a)
-{
-    int first;
-    int second;
-    int third;
+// t_stack *ft_sort_3(t_stack *stack_a)
+// {
+//     int first;
+//     int second;
+//     int third;
 
-    first = stack_a->top->value;
-    second = stack_a->top->next->value;
-    third = stack_a->bottom->value;
+//     first = stack_a->top->value;
+//     second = stack_a->top->next->value;
+//     third = stack_a->bottom->value;
     
-    if (first < second && second > third && first < third)
-    {
-        rra(stack_a, false);
-        sa(stack_a, false);
-    }
-    else if (first > second && second < third && first < third)
-        sa(stack_a, false);
-    else if (first < second && second > third && first > third)
-        rra(stack_a, false);
-    else if (first > second && second < third && first > third)
+//     if (first < second && second > third && first < third)
+//     {
+//         rra(stack_a, false);
+//         sa(stack_a, false);
+//     }
+//     else if (first > second && second < third && first < third)
+//         sa(stack_a, false);
+//     else if (first < second && second > third && first > third)
+//         rra(stack_a, false);
+//     else if (first > second && second < third && first > third)
+//         ra(stack_a, false);
+//     else if (first > second && second > third)
+//     {
+//         ra(stack_a, false);
+//         sa(stack_a, false);
+//     }
+//     return (stack_a);
+// }
+
+void ft_tiny_sort(t_stack *stack_a)
+{
+    ft_assign_biggest_smallest(stack_a);
+    if (stack_a->top == stack_a->biggest)
         ra(stack_a, false);
-    else if (first > second && second > third)
-    {
-        ra(stack_a, false);
+    else if (stack_a->top->next == stack_a->biggest)
+        rra(stack_a, false);
+    if (stack_a->top->value > stack_a->top->next->value)
         sa(stack_a, false);
-    }
-    return (stack_a);
 }
 
 // t_stack *ft_sort_4_5(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
@@ -167,19 +178,19 @@ t_stack *ft_sort_3(t_stack *stack_a)
 //     return stack_a;
 // }
 
-t_stack *ft_sort_4_5(t_stack *stack_a, t_stack *stack_b)
-{
-    int count;
+// t_stack *ft_sort_4_5(t_stack *stack_a, t_stack *stack_b)
+// {
+//     int count;
 
-    count = stack_a->size;
-    if (count == 4)
-        ft_move_to_stackb(stack_a, stack_b, 1);
-    else if (count == 5)
-        ft_move_to_stackb(stack_a, stack_b, 2);
-    ft_sort_3(stack_a);
-    if (stack_b->size > 1 && stack_b->top->value < stack_b->top->next->value)
-        sb(stack_b, false);
-    while (stack_b->size > 0)
-        pa(stack_a, stack_b);
-    return stack_a;
-}
+//     count = stack_a->size;
+//     if (count == 4)
+//         ft_move_to_stackb(stack_a, stack_b, 1);
+//     else if (count == 5)
+//         ft_move_to_stackb(stack_a, stack_b, 2);
+//     ft_sort_3(stack_a);
+//     if (stack_b->size > 1 && stack_b->top->value < stack_b->top->next->value)
+//         sb(stack_b, false);
+//     while (stack_b->size > 0)
+//         pa(stack_a, stack_b);
+//     return stack_a;
+// }

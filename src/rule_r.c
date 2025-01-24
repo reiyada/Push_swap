@@ -6,7 +6,7 @@
 /*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:56:58 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/23 19:53:35 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/24 11:11:18 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void ft_top_to_bottom(t_stack *stack)
     stack->bottom = temp;
     temp->next = NULL;
     increment_operation_count();
+    ft_assign_index(stack);
 }
 
 //1 2 3 4 5 -> 2 3 4 5 1
@@ -83,6 +84,7 @@ void rra(t_stack *stack_a, bool print)
         ra(stack_a, true);
     if (print == false)
         ft_printf("rra\n");
+    ft_assign_index(stack_a);
 }
 
 // void rrb(t_stack *stack_b, bool print)
@@ -118,6 +120,7 @@ void rrb(t_stack *stack_b, bool print)
         ra(stack_b, true);
     if (print == false)
         ft_printf("rrb\n");
+    ft_assign_index(stack_b);
 }
 
 void rrr(t_stack *stack_a, t_stack *stack_b)

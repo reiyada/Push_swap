@@ -6,7 +6,7 @@
 /*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:35:32 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/23 19:52:31 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/24 11:10:09 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void pa(t_stack *stack_a, t_stack *stack_b)
     stack_a->size++;
     ft_printf("pa\n");
     increment_operation_count();
+    ft_assign_index(stack_a);
+    ft_assign_index(stack_b);
 }
 
 void pb(t_stack *stack_b, t_stack *stack_a)
@@ -48,4 +50,6 @@ void pb(t_stack *stack_b, t_stack *stack_a)
     stack_b->size++;
     ft_printf("pb\n");
     increment_operation_count();
+    ft_assign_index(stack_a);
+    ft_assign_index(stack_b);
 }

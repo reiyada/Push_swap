@@ -6,7 +6,7 @@
 /*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/23 19:59:59 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/24 12:04:42 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void ft_assign_index(t_stack *stack);
 void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b);
 void ft_assign_biggest_smallest(t_stack *stack_b);
 void ft_find_cheapest(t_stack *stack_a);
-void ft_find_target_node(t_stack *stack_a, t_stack *stack_b);
+void ft_find_target_a(t_stack *stack_a, t_stack *stack_b);
+void ft_set_target_b(t_stack *stack_a, t_stack *stack_b);
 void ft_target_to_top(t_stack *stack_b, t_node *target);
 void ft_sort_stack_b(t_stack *stack_b);
 void ft_sort_stack_a(t_stack *stack_a, t_stack *stack_b);
@@ -85,7 +86,7 @@ int ft_count_cost_b(t_node *current_a, t_stack *stack_b);
 int ft_is_sorted(t_stack *stack_a);
 
 t_stack *ft_sort_2(t_stack *stack_a);
-t_stack *ft_sort_3(t_stack *stack_a);
+void ft_tiny_sort(t_stack *stack_a);
 t_stack *ft_sort_4_5(t_stack *stack_a, t_stack *stack_b);
 
 void increment_operation_count(void);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Turk.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:34:26 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/23 14:05:26 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/24 12:03:00 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void ft_count_cost_a(t_stack *stack_a)
     }
 }
 
-void ft_find_target_node(t_stack *stack_a, t_stack *stack_b)
+void ft_find_target_a(t_stack *stack_a, t_stack *stack_b)
 {
     t_node *current_a;
     t_node *current_b;
@@ -106,6 +106,51 @@ void ft_find_target_node(t_stack *stack_a, t_stack *stack_b)
         current_a->target = best_target;
         // printf("Target of %d is %d\n", current_a->value, current_a->target->value);
         current_a = current_a->next;
+    }
+}
+
+void ft_set_target_b(t_stack *stack_a, t_stack *stack_b)
+{
+t_node *current_b; // Pointer to traverse stack_b
+    t_node *current_a; // Pointer to traverse stack_a
+    t_node *best_target; // Closest bigger value in stack_a for the current node in stack_b
+
+    if (!stack_a || !stack_b || stack_a->size == 0 || stack_b->size == 0)
+        return;
+
+    current_b = stack_b->top;
+    while (current_b)
+    {
+        best_target = NULL;
+        current_a = stack_a->top;
+
+        // Traverse stack_a to find the closest bigger value
+        while (current_a)
+        {
+            if (current_a->value > current_b->value) // Find a bigger value
+            {
+                if (!best_target || current_a->value < best_target->value)
+                {
+                    best_target = current_a; // Update the closest bigger value
+                }
+            }
+            current_a = current_a->next;
+        }
+
+        // If no bigger value is found, choose the smallest node in stack_a
+        if (!best_target)
+        {
+            best_target = stack_a->smallest; // Ensure smallest is assigned beforehand
+        }
+
+        // Assign the target node to the current node in stack_b
+        current_b->target = best_target;
+
+        // Debug output to verify
+        // ft_printf("Node %d in stack_b -> Target %d in stack_a\n",
+        //           current_b->value, best_target->value);
+
+        current_b = current_b->next;
     }
 }
 
@@ -211,7 +256,7 @@ void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b)
     while (current_a)
     {
         cost_a = current_a->cost;
-        ft_find_target_node(stack_a, stack_b);
+        ft_find_target_a(stack_a, stack_b);
         cost_b = ft_count_cost_b(current_a, stack_b);
         current_a->cost = cost_a + cost_b;
         // ft_printf("Node Value: %d, Cost_a: %d, Cost_b: %d, Total cost: %d\n",
