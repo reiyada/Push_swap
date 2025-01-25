@@ -6,7 +6,7 @@
 /*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/24 12:04:42 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/24 17:02:02 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void ft_rotate_to_sorted(t_stack *stack_a);
 void ft_set_top_bottom(t_stack *stack_a);
 int ft_check_argc(int argc);
 int ft_check_digit(int argc, char **argv);
-int ft_check_range(char **argv);
+int ft_check_range(int argc, char **argv);
 int ft_check_dup(int argc, char **argv);
 int ft_error(int argc, char **argv);
 int ft_find_pivot(t_stack *stack_a, int size);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:45:49 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/08 14:21:28 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/24 17:02:42 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,15 @@ int ft_check_digit(int argc, char **argv)
 }
 
 //Overflow or Underflow
-int ft_check_range(char **argv)
+int ft_check_range(int argc, char **argv)
 {
     int i;
     int len;
 
-    i = 1;
+    if (argc == 2)
+        i = 0;
+    else
+        i = 1;
     while (argv[i])
     {
         len = ft_strlen(argv[i]);
@@ -113,7 +116,7 @@ int ft_error(int argc, char **argv)
         return (0);
     if (ft_check_digit(argc, argv) == 0)
         return (0);
-    else if (ft_check_range(argv) == 0)
+    else if (ft_check_range(argc, argv) == 0)
         return (0);
     else if (ft_check_dup(argc, argv) == 0)
         return (0);
