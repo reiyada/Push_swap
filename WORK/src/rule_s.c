@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rule_s.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:19:55 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/24 11:12:14 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/25 17:14:16 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void sa(t_stack *stack_a, bool print)
     if (print == false)
         ft_printf("sa\n");
     increment_operation_count();
-    ft_assign_index(stack_a);
+    ft_update_stack(stack_a, stack_b);
+    ft_update_node(stack_a, stack_b);
 }
 //1 2 3 4 5 -> 2 1 3 4 5
 void sb(t_stack *stack_b, bool print)
@@ -64,7 +65,8 @@ void sb(t_stack *stack_b, bool print)
     if (print == false)
         ft_printf("sb\n");
     increment_operation_count();
-    ft_assign_index(stack_b);
+    ft_update_stack(stack_a, stack_b);
+    ft_update_node(stack_a, stack_b);
 }
 
 void ss(t_stack *stack_a, t_stack *stack_b)

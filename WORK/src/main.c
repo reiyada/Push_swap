@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/24 17:08:38 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/25 15:58:43 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ int main (int argc, char **argv)
 void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 {
     //Set the stack
-    ft_ini_stack(stack_a, stack_b);
+    ft_ini_stack(stack_a);
+    ft_ini_stack(stack_b);
     ft_fill_stack(stack_a, argc, argv);
     //If it is already sorted order, return nothing
     if (ft_is_sorted(stack_a))

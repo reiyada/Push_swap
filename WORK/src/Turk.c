@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Turk.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:34:26 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/24 12:03:00 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/25 17:11:19 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,6 +241,34 @@ int ft_count_cost_b(t_node *current_a, t_stack *stack_b)
     else
         return (reverse_cost);
 }
+//void ft_update_cost_b(t_stack *stack_a, t_stack *stack_b)
+// {
+//     t_node *current_a;
+//     t_node *target_node;
+//     int forward_cost;
+//     int reverse_cost;
+
+//     if (!stack_a || !stack_a->top || !stack_b || stack_b->size == 0)
+//         return;
+
+//     current_a = stack_a->top;
+//     while (current_a)
+//     {
+//         if (!current_a->target)
+//         {
+//             current_a = current_a->next;
+//             continue;
+//         }
+//         target_node = current_a->target;
+//         forward_cost = target_node->index;
+//         reverse_cost = stack_b->size - target_node->index;
+//         if (forward_cost < reverse_cost)
+//             current_a->cost = forward_cost;
+//         else
+//             current_a->cost = reverse_cost;
+//         current_a = current_a->next;
+//     }
+// }
 
 
 void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b)

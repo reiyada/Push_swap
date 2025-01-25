@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rule_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:35:32 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/24 11:10:09 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/25 17:16:24 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void pa(t_stack *stack_a, t_stack *stack_b)
     stack_a->size++;
     ft_printf("pa\n");
     increment_operation_count();
-    ft_assign_index(stack_a);
-    ft_assign_index(stack_b);
+    ft_update_stack(stack_a, stack_b);
+    ft_update_node(stack_a, stack_b);
 }
 
 void pb(t_stack *stack_b, t_stack *stack_a)
@@ -50,6 +50,6 @@ void pb(t_stack *stack_b, t_stack *stack_a)
     stack_b->size++;
     ft_printf("pb\n");
     increment_operation_count();
-    ft_assign_index(stack_a);
-    ft_assign_index(stack_b);
+    ft_update_stack(stack_a, stack_b);
+    ft_update_node(stack_a, stack_b);
 }
