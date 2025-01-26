@@ -67,7 +67,7 @@ void ft_set_index(t_stack *stack)
     }
 }
 
-void ft_push(t_stack *stack_a, int value, int to_top)
+void ft_push_node(t_stack *stack_a, int value, int to_top)
 {
     t_node *new_node;
 
@@ -99,53 +99,34 @@ void ft_fill_stack(t_stack *stack_a, int argc, char **argv)
     while (i < size)
     {
         value = ft_atoi(argv[i]);
-        ft_push(stack_a, value, 0);
+        ft_push_node(stack_a, value, 0);
         i++;
     }
 }
 
-
-// void ft_push(t_stack *stack, int value, int to_top)
-// {
-//     t_node *new_node;
-
-//     new_node = malloc(sizeof(t_node));
-//     if (!new_node)
-//     {
-//         ft_putstr_fd("Error\n", 2);
-//         return;
-//     }
-//     new_node->value = value;
-//     new_node->next = NULL;
-//     if (to_top || !stack->top)
-//     {
-//         new_node->next = stack->top;
-//         stack->top = new_node;
-//         if (!stack->bottom)
-//             stack->bottom = new_node;
-//     }
-//     else
-//     {
-//         stack->bottom->next = new_node;
-//         stack->bottom = new_node;
-//     }
-// }
-
-// void ft_set_biggest_smallest(t_stack *stack)
-// {
-//     if (!stack || !stack->top)
-//         return;
-
-//     t_node *current = stack->top;
-//     stack->biggest = current;
-//     stack->smallest = current;
-
-//     while (current)
-//     {
-//         if (current->value > stack->biggest->value)
-//             stack->biggest = current;
-//         if (current->value < stack->smallest->value)
-//             stack->smallest = current;
-//         current = current->next;
-//     }
-// }
+void ft_display_stack(t_stack *stack_a, t_stack *stack_b)
+{
+    // int i;
+    // i = 0;
+    t_node *current_a;
+    t_node *current_b;
+    current_a = stack_a->top;
+    current_b = stack_b->top;
+    ft_printf("    A B\n");
+    while(current_a || current_b)
+    {
+        if (current_a)
+        {
+            ft_printf("[%d] %d",current_a->index, current_a->value);
+            current_a = current_a->next;
+        }
+        else
+            ft_printf("  "); //2 spaces
+        if (current_b)
+        {
+            ft_printf("[%d] %d", current_b->index, current_b->value);
+            current_b = current_b->next;
+        }
+        ft_printf("\n");
+    }
+}

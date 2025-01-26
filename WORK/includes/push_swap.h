@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/25 17:17:19 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/26 01:06:53 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ typedef struct s_stack
     int size;
 }   t_stack;
 
+//main.c
+void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
+
 //error.c
 int ft_check_argc(int argc);
 int ft_check_digit(int argc, char **argv);
@@ -52,15 +55,16 @@ t_node *ft_ini_node(int value);
 void ft_set_next(t_stack *stack, t_node *node, int to_top);
 void ft_set_top_bottom(t_stack *stack, t_node *node);
 void ft_set_index(t_stack *stack);
-void ft_push(t_stack *stack_a, int value, int to_top);
+void ft_push_node(t_stack *stack_a, int value, int to_top);
 void ft_fill_stack(t_stack *stack_a, int argc, char **argv);
+void ft_display_stack(t_stack *stack_a, t_stack *stack_b);//DELETE
 
 //update_stack.c
 void ft_update_top_bottom(t_stack *stack);
 void ft_update_biggest_smallest(t_stack *stack);
 void ft_update_size(t_stack *stack);
 void ft_update_cheapest(t_stack *stack_a);
-void ft_update_stack(t_stack *stack_a, t_stack *stack_b);
+void ft_update_stack(t_stack *stack);
 
 //update_node.c
 void ft_update_target_a(t_stack *stack_a, t_stack *stack_b);
@@ -68,52 +72,44 @@ void ft_update_target_b(t_stack *stack_a, t_stack *stack_b);
 void ft_update_index(t_stack *stack);
 void ft_update_node(t_stack *stack_a, t_stack *stack_b);
 
+//rule_p.c
+void ft_push(t_stack **stack_to, t_stack **stack_from);
+void pa(t_stack **stack_a, t_stack **stack_b);
+void pb(t_stack **stack_b, t_stack **stack_a);
 
+//rule_r.c
+void ft_top_to_bottom(t_stack *stack_move);
+void ra(t_stack **stack_a, t_stack **stack_b, bool print);
+void rb(t_stack **stack_b, t_stack **stack_a, bool print);
+void rr(t_stack **stack_a, t_stack **stack_b);
+void ft_bottom_to_top(t_stack *stack_move);
+void rra(t_stack **stack_a, t_stack **stack_b, bool print);
+void rrb(t_stack **stack_b, t_stack **stack_a,bool print);
+void rrr(t_stack **stack_a, t_stack **stack_b);
 
-void ft_push(t_stack *stack, int value, int to_top);
-void ft_display_stack(t_stack *stack_a, t_stack *stack_b);
-void ft_free_stack(t_stack *stack);
-void ft_free_tab(char **tab);
-void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
-void sa(t_stack *stack_a, bool print);
-void sb(t_stack *stack_b, bool print);
-void ss(t_stack *stack_a, t_stack *stack_b);
-void pa(t_stack *stack_a, t_stack *stack_b);
-void pb(t_stack *stack_b, t_stack *stack_a);
-void ft_top_to_bottom(t_stack *stack);
-void ra(t_stack *stack_a, bool print);
-void rb(t_stack *stack_b, bool print);
-void rr(t_stack *stack_a, t_stack *stack_b);
-void rra(t_stack *stack_a, bool print);
-void rrb(t_stack *stack_b, bool print);
-void rrr(t_stack *stack_a, t_stack *stack_b);
-void ft_sort_array(int *array, int size);
-void ft_move_to_stackb(t_stack *stack_a, t_stack *stack_b, int count);
+//rule_s.c
+void ft_swap(t_stack *stack_swap, t_stack *stack_stay);
+void sa(t_stack **stack_a, t_stack **stack_b, bool print);
+void sb(t_stack **stack_b, t_stack **stack_a, bool print);
+void ss(t_stack **stack_a, t_stack **stack_b);
+
+//tiny_sort.c
+void ft_tiny_sort(t_stack *stack_a, t_stack*stack_b);
+
+//turk.c
 void ft_count_cost_a(t_stack *stack_a);
-void ft_assign_index(t_stack *stack);
-void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b);
-void ft_assign_biggest_smallest(t_stack *stack_b);
-void ft_find_cheapest(t_stack *stack_a);
-void ft_find_target_a(t_stack *stack_a, t_stack *stack_b);
-void ft_set_target_b(t_stack *stack_a, t_stack *stack_b);
-void ft_target_to_top(t_stack *stack_b, t_node *target);
-void ft_sort_stack_b(t_stack *stack_b);
-void ft_sort_stack_a(t_stack *stack_a, t_stack *stack_b);
-void ft_cheapest_to_top(t_stack *stack_a);
-void ft_rotate_to_sorted(t_stack *stack_a);
-
-void ft_set_top_bottom(t_stack *stack_a);
-int ft_find_pivot(t_stack *stack_a, int size);
-int ft_countstr(char **tab);
 int ft_count_cost_b(t_node *current_a, t_stack *stack_b);
-int ft_is_sorted(t_stack *stack_a);
+void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b);
+void ft_find_cheapest(t_stack *stack_a, t_stack *stack_b);
+void ft_cheapest_to_top(t_stack *stack_a, t_stack *stack_b);
 
-t_stack *ft_sort_2(t_stack *stack_a);
-void ft_tiny_sort(t_stack *stack_a);
-t_stack *ft_sort_4_5(t_stack *stack_a, t_stack *stack_b);
-
+//utils.c
 void increment_operation_count(void);
 int get_operation_count(void);
 void reset_operation_count(void);
+int ft_countstr(char **tab);
+void ft_free_tab(char **tab);
+void ft_free_stack(t_stack *stack);
+int ft_is_sorted(t_stack *stack_a);
 
 #endif

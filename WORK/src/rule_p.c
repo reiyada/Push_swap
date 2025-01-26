@@ -3,53 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   rule_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:35:32 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/25 17:16:24 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/26 00:53:22 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void pa(t_stack *stack_a, t_stack *stack_b)
+void ft_push(t_stack **stack_to, t_stack **stack_from)
 {
     t_node *temp;
-    if (!stack_b->top)
+    if (!(*stack_from)->top)
         return;
-    temp = stack_b->top;
-    stack_b->top = stack_b->top->next;
-    if(!stack_b->top)
-        stack_b->bottom = NULL;
-    stack_b->size--;
-    temp->next = stack_a->top;
-    stack_a->top = temp;
-    if (!stack_a->bottom)
-        stack_a->bottom = temp;
-    stack_a->size++;
-    ft_printf("pa\n");
+    temp = (*stack_from)->top;
+    (*stack_from)->top = (*stack_from)->top->next;
+    temp->next = (*stack_to)->top;
+    (*stack_to)->top = temp;
     increment_operation_count();
-    ft_update_stack(stack_a, stack_b);
-    ft_update_node(stack_a, stack_b);
+    ft_update_stack(*stack_to);
+    ft_update_stack(*stack_from);
+    ft_update_node((*stack_to), stack_from);
 }
 
-void pb(t_stack *stack_b, t_stack *stack_a)
+void pa(t_stack **stack_a, t_stack **stack_b)
 {
-    t_node *temp;
-    if (!stack_a->top)
-        return;
-    temp = stack_a->top;
-    stack_a->top = stack_a->top->next;
-    if(!stack_a->top)
-        stack_a->bottom = NULL;
-    stack_a->size--;
-    temp->next = stack_b->top;
-    stack_b->top = temp;
-    if (!stack_b->bottom)
-        stack_b->bottom = temp;
-    stack_b->size++;
+    ft_push(stack_a, stack_b);
+    ft_printf("pa\n");
+}
+
+void pb(t_stack **stack_b, t_stack **stack_a)
+{
+    ft_push(stack_b, stack_a);
     ft_printf("pb\n");
-    increment_operation_count();
-    ft_update_stack(stack_a, stack_b);
-    ft_update_node(stack_a, stack_b);
 }

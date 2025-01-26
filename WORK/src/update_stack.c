@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 15:43:20 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/25 16:56:30 by ryada            ###   ########.fr       */
+/*   Updated: 2025/01/26 00:52:30 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,10 @@ void ft_update_cheapest(t_stack *stack_a)
     stack_a->cheapest = cheapest;
 }
 
-void ft_update_stack(t_stack *stack_a, t_stack *stack_b)
+void ft_update_stack(t_stack *stack)
 {
-    ft_update_top_bottom(stack_a);
-    ft_update_biggest_smallest(stack_a);
-    ft_update_size(stack_a);
-    ft_update_cheapest(stack_a);
-
-    ft_update_top_bottom(stack_b);
-    ft_update_biggest_smallest(stack_b);
-    ft_update_size(stack_b);
-    ft_update_cheapest(stack_b);
+    ft_update_top_bottom(stack);
+    ft_update_biggest_smallest(stack);
+    ft_update_size(stack);
+    ft_update_cheapest(stack);
 }
