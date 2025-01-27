@@ -41,16 +41,14 @@ void ft_free_tab(char **tab)
 void ft_free_stack(t_stack *stack)
 {
     t_node *current;
-    t_node *temp;
+    t_node *next;
 
-    if (!stack)
-        return;
-    current  = stack->top;
+    current = stack->top;
     while (current)
     {
-        temp = current;
-        current = current->next;
-        free(temp);
+        next = current->next;
+        free(current);
+        current = next;
     }
     free(stack);
 }

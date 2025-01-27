@@ -6,7 +6,7 @@
 /*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:34:26 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/26 00:28:10 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/27 00:15:29 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,23 +104,24 @@ void ft_find_cheapest(t_stack *stack_a, t_stack *stack_b)
     stack_a->cheapest = cheapest;
 }
 
-void ft_cheapest_to_top(t_stack *stack_a, t_stack *stack_b)
+void ft_cheapest_to_top(t_stack **stack_a, t_stack **stack_b)
 {
     int forward_cost;
     int reverse_cost;
 
-    if (!stack_a || !stack_a->cheapest)
+    if (!(*stack_a) || !(*stack_a)->cheapest)
         return;
-    forward_cost = stack_a->cheapest->index;
-    reverse_cost = stack_a->size - stack_a->cheapest->index;
+    forward_cost = (*stack_a)->cheapest->index;
+    reverse_cost = (*stack_a)->size - (*stack_a)->cheapest->index;
+
     if (forward_cost < reverse_cost)
     {
         while (forward_cost--)
-            ra(stack_a, stack_b, false);
+            ra(stack_a, stack_b, false); // Pass double pointers
     }
     else
     {
         while (reverse_cost--)
-            rra(stack_a, stack_b, false);
+            rra(stack_a, stack_b, false); // Pass double pointers
     }
 }

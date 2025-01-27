@@ -9,7 +9,8 @@
     "format": "c",
     "initializer_list": "c",
     "span": "c",
-    "regex": "c"
+    "regex": "c",
+    "chrono": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

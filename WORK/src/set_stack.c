@@ -7,6 +7,7 @@ void ft_ini_stack(t_stack *stack)
     stack->size = 0;
     stack->biggest = NULL;
     stack->smallest = NULL;
+    stack->cheapest = NULL;
 }
 
 t_node *ft_ini_node(int value)

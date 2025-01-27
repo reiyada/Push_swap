@@ -6,7 +6,7 @@
 /*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 15:43:20 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/26 00:52:30 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/26 20:47:11 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void ft_update_top_bottom(t_stack *stack)
 
     if (!stack || !stack->top)
     {
-        stack->top = NULL;
         stack->bottom = NULL;
         return;
     }

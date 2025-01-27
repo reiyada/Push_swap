@@ -6,7 +6,7 @@
 /*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:35:32 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/26 00:53:22 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/26 23:51:28 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,20 @@
 void ft_push(t_stack **stack_to, t_stack **stack_from)
 {
     t_node *temp;
-    if (!(*stack_from)->top)
+    if (!(*stack_from) || !(*stack_from)->top)
         return;
     temp = (*stack_from)->top;
     (*stack_from)->top = (*stack_from)->top->next;
+    if (!(*stack_from)->top)
+        (*stack_from)->bottom = NULL;
     temp->next = (*stack_to)->top;
     (*stack_to)->top = temp;
-    increment_operation_count();
+    if (!(*stack_to)->bottom)
+        (*stack_to)->bottom = temp;
     ft_update_stack(*stack_to);
     ft_update_stack(*stack_from);
-    ft_update_node((*stack_to), stack_from);
+    ft_update_node(stack_to, stack_from);
+    increment_operation_count();
 }
 
 void pa(t_stack **stack_a, t_stack **stack_b)

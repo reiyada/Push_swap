@@ -6,7 +6,7 @@
 /*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/26 01:06:53 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/27 00:15:25 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ typedef struct s_stack
 }   t_stack;
 
 //main.c
-void ft_push_swap_turk(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
+void ft_push_swap_turk(t_stack **stack_a, t_stack **stack_b, int argc, char **argv);
+void ft_sort_large_stack(t_stack **stack_a, t_stack **stack_b);
+void ft_align_stack_a(t_stack **stack_a, t_stack **stack_b);
 
 //error.c
 int ft_check_argc(int argc);
@@ -70,7 +72,7 @@ void ft_update_stack(t_stack *stack);
 void ft_update_target_a(t_stack *stack_a, t_stack *stack_b);
 void ft_update_target_b(t_stack *stack_a, t_stack *stack_b);
 void ft_update_index(t_stack *stack);
-void ft_update_node(t_stack *stack_a, t_stack *stack_b);
+void ft_update_node(t_stack **stack_a, t_stack **stack_b);
 
 //rule_p.c
 void ft_push(t_stack **stack_to, t_stack **stack_from);
@@ -78,30 +80,30 @@ void pa(t_stack **stack_a, t_stack **stack_b);
 void pb(t_stack **stack_b, t_stack **stack_a);
 
 //rule_r.c
-void ft_top_to_bottom(t_stack *stack_move);
+void ft_top_to_bottom(t_stack **stack_move);
 void ra(t_stack **stack_a, t_stack **stack_b, bool print);
 void rb(t_stack **stack_b, t_stack **stack_a, bool print);
 void rr(t_stack **stack_a, t_stack **stack_b);
-void ft_bottom_to_top(t_stack *stack_move);
+void ft_bottom_to_top(t_stack **stack_move);
 void rra(t_stack **stack_a, t_stack **stack_b, bool print);
 void rrb(t_stack **stack_b, t_stack **stack_a,bool print);
 void rrr(t_stack **stack_a, t_stack **stack_b);
 
 //rule_s.c
-void ft_swap(t_stack *stack_swap, t_stack *stack_stay);
+void ft_swap(t_stack **stack_swap, t_stack **stack_stay);
 void sa(t_stack **stack_a, t_stack **stack_b, bool print);
 void sb(t_stack **stack_b, t_stack **stack_a, bool print);
 void ss(t_stack **stack_a, t_stack **stack_b);
 
 //tiny_sort.c
-void ft_tiny_sort(t_stack *stack_a, t_stack*stack_b);
+void ft_tiny_sort(t_stack **stack_a, t_stack **stack_b);
 
 //turk.c
 void ft_count_cost_a(t_stack *stack_a);
 int ft_count_cost_b(t_node *current_a, t_stack *stack_b);
 void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b);
 void ft_find_cheapest(t_stack *stack_a, t_stack *stack_b);
-void ft_cheapest_to_top(t_stack *stack_a, t_stack *stack_b);
+void ft_cheapest_to_top(t_stack **stack_a, t_stack **stack_b);
 
 //utils.c
 void increment_operation_count(void);
