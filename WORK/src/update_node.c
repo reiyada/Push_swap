@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:27:00 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/26 21:31:59 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/27 17:19:00 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,24 @@
 //     int index;
 // }   t_node;
 
-void ft_update_target_a(t_stack *stack_a, t_stack *stack_b)
+void ft_update_target_a(t_stack **stack_a, t_stack **stack_b)
 {
     t_node *current_a;
     t_node *current_b;
     t_node *best_target;
 
-    if (!stack_a || !stack_b || stack_b->size == 0)
+    if (!stack_a || !stack_b || (*stack_b)->size == 0)
         return;
-    current_a = stack_a->top;
+    current_a = (*stack_a)->top;
     while (current_a)
     {
-        if (current_a->value < stack_b->smallest->value)
-            best_target = stack_b->smallest;
-        else if (current_a->value > stack_b->biggest->value)
-            best_target = stack_b->biggest;
+        if (current_a->value < (*stack_b)->smallest->value)
+            best_target = (*stack_b)->smallest;
+        else if (current_a->value > (*stack_b)->biggest->value)
+            best_target = (*stack_b)->biggest;
         else
         {
-            current_b = stack_b->top;
+            current_b = (*stack_b)->top;
             while (current_b)
             {
                 if (current_a->value > current_b->value &&
@@ -51,7 +51,7 @@ void ft_update_target_a(t_stack *stack_a, t_stack *stack_b)
             }
         }
         if (!best_target)
-            best_target = stack_b->top;
+            best_target = (*stack_b)->top;
         current_a->target = best_target;
         current_a = current_a->next;
     }
@@ -135,19 +135,19 @@ void ft_update_target_a(t_stack *stack_a, t_stack *stack_b)
 
 
 //GOOD ONE
-void ft_update_target_b(t_stack *stack_a, t_stack *stack_b)
+void ft_update_target_b(t_stack **stack_a, t_stack **stack_b)
 {
     t_node *current_b;
     t_node *current_a;
     t_node *best_target;
 
-    if (!stack_a || !stack_b || stack_a->size == 0 || stack_b->size == 0)
+    if (!stack_a || !stack_b || (*stack_a)->size == 0 || (*stack_b)->size == 0)
         return;
-    current_b = stack_b->top;
+    current_b = (*stack_b)->top;
     while (current_b)
     {
         best_target = NULL;
-        current_a = stack_a->top;
+        current_a = (*stack_a)->top;
         while (current_a)
         {
             if (current_a->value > current_b->value)
@@ -158,7 +158,7 @@ void ft_update_target_b(t_stack *stack_a, t_stack *stack_b)
             current_a = current_a->next;
         }
         if (!best_target)
-            best_target = stack_a->smallest;
+            best_target = (*stack_a)->smallest;
         current_b->target = best_target;
         current_b = current_b->next;
     }
@@ -194,13 +194,13 @@ void ft_update_target_b(t_stack *stack_a, t_stack *stack_b)
 // }
 
 
-void ft_update_index(t_stack *stack)
+void ft_update_index(t_stack **stack)
 {
     t_node *current;
     int i;
 
     i = 0;
-    current = stack->top;
+    current = (*stack)->top;
     while (current)
     {
         current->index = i;
@@ -211,8 +211,8 @@ void ft_update_index(t_stack *stack)
 
 void ft_update_node(t_stack **stack_a, t_stack **stack_b)
 {
-    ft_update_target_a(*stack_a, *stack_b);
-    ft_update_target_b(*stack_a, *stack_b);
-    ft_update_index(*stack_a);
-    ft_update_index(*stack_b);
+    ft_update_target_a(stack_a, stack_b);
+    ft_update_target_b(stack_a, stack_b);
+    ft_update_index(stack_a);
+    ft_update_index(stack_b);
 }

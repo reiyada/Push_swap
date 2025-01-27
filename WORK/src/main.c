@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/27 00:09:44 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/27 17:31:52 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,40 +72,44 @@ void ft_align_stack_a(t_stack **stack_a, t_stack **stack_b)
 
 void ft_sort_large_stack(t_stack **stack_a, t_stack **stack_b)
 {
-    printf("Sorting large stack:\n");
-    ft_display_stack(*stack_a, *stack_b);
-    while ((*stack_b)->size < 2 &&(*stack_a)->size > 3)
+    // printf("Sorting large stack:\n");
+    // ft_display_stack(*stack_a, *stack_b);
+    while ((*stack_b)->size < 2)
     {  
         pb(stack_b, stack_a);
-        ft_display_stack(*stack_a, *stack_b);
+        // ft_display_stack(*stack_a, *stack_b);
     }
     // Push all but 3 elements from A to B
     while ((*stack_a)->size > 3)
     {
-        ft_find_cheapest(*stack_a, *stack_b);
-        printf("Cheapest node in A: %d\n", (*stack_a)->cheapest->value);
-
-        ft_cheapest_to_top(stack_a, stack_b);
+        //ft_find_cheapest(stack_a, stack_b);
+        // printf("Cheapest node in A: %d\n", (*stack_a)->cheapest->value);
+        ft_update_node(stack_a, stack_b);
+        ft_before_pb(stack_a, stack_b);
         pb(stack_b, stack_a);
-        ft_display_stack(*stack_a, *stack_b);
+        (*stack_a)->cheapest = NULL;
+        // ft_display_stack(*stack_a, *stack_b);
     }
-
+    ft_before_pb(stack_a, stack_b);
     // Sort the remaining 3 elements in A
     ft_tiny_sort(stack_a, stack_b);
-    printf("After tiny sort:\n");
-    ft_display_stack(*stack_a, *stack_b);
+    // printf("After tiny sort:\n");
+    // ft_display_stack(*stack_a, *stack_b);
 
     // Push elements back from B to A
     while ((*stack_b)->size > 0)
     {
-        printf("Pushing elements from B to A\n");
-        printf("Top B[%d] -> Target[%d]\n", (*stack_b)->top->value, (*stack_b)->top->target->value);
+        // printf("Pushing elements from B to A\n");
+       // printf("Top B[%d] -> Target[%d]\n", (*stack_b)->top->value, (*stack_b)->top->target->value);
+        ft_update_node(stack_a, stack_b);
         if ((*stack_b)->top->target->index < (*stack_a)->size / 2)
         {
+            ft_display_stack(*stack_a, *stack_b);
+            printf("Top B:%d   Target of top B: %d\n", (*stack_b)->top->value, (*stack_b)->top->target->value);
             while ((*stack_a)->top != (*stack_b)->top->target)
             {
                 ra(stack_a, stack_b, false);
-                ft_display_stack(*stack_a, *stack_b);
+                // ft_display_stack(*stack_a, *stack_b);
             }
         }
         else
@@ -113,15 +117,31 @@ void ft_sort_large_stack(t_stack **stack_a, t_stack **stack_b)
             while ((*stack_a)->top != (*stack_b)->top->target)
             {
                 rra(stack_a, stack_b, false);
-                ft_display_stack(*stack_a, *stack_b);
+                // ft_display_stack(*stack_a, *stack_b);
             }
         }
         pa(stack_a, stack_b);
-        ft_display_stack(*stack_a, *stack_b);
+        // ft_display_stack(*stack_a, *stack_b);
     }
+    //printf("A smallest %d\n", (*stack_a)->smallest->value);
     // Align the smallest element in A at the top
+    ft_display_stack(*stack_a, *stack_b);
     if (!ft_is_sorted(*stack_a))
         ft_align_stack_a(stack_a, stack_b);
+}
+
+void ft_push_swap_turk(t_stack **stack_a, t_stack **stack_b, int argc, char **argv)
+{
+    // Initialize stacks
+    ft_ini_stack(*stack_a);
+    ft_ini_stack(*stack_b);
+    ft_fill_stack(*stack_a, argc, argv);
+    if (ft_is_sorted(*stack_a))
+        return;
+    if ((*stack_a)->size > 3)
+        ft_sort_large_stack(stack_a, stack_b);
+    else
+        ft_tiny_sort(stack_a, stack_b); // Sort small stack
 }
 
 
@@ -173,19 +193,6 @@ void ft_sort_large_stack(t_stack **stack_a, t_stack **stack_b)
 //         //ft_align_stack_a(stack_a, stack_b);
 // }
 
-void ft_push_swap_turk(t_stack **stack_a, t_stack **stack_b, int argc, char **argv)
-{
-    // Initialize stacks
-    ft_ini_stack(*stack_a);
-    ft_ini_stack(*stack_b);
-    ft_fill_stack(*stack_a, argc, argv);
-    if (ft_is_sorted(*stack_a))
-        return;
-    if ((*stack_a)->size > 3)
-        ft_sort_large_stack(stack_a, stack_b);
-    else
-        ft_tiny_sort(stack_a, stack_b); // Sort small stack
-}
         
 
 // //NO DISPLAY

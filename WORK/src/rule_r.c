@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rule_r.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:56:58 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/27 00:03:17 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/27 14:53:01 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,8 +184,8 @@ void rra(t_stack **stack_a, t_stack **stack_b, bool print)
     }
 
     // Debugging
-    printf("After rra:\n");
-    ft_display_stack(*stack_a, *stack_b);
+    // printf("After rra:\n");
+    // ft_display_stack(*stack_a, *stack_b);
 }
 
 

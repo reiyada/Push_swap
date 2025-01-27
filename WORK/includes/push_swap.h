@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/27 00:15:25 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/27 17:19:50 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void ft_update_cheapest(t_stack *stack_a);
 void ft_update_stack(t_stack *stack);
 
 //update_node.c
-void ft_update_target_a(t_stack *stack_a, t_stack *stack_b);
-void ft_update_target_b(t_stack *stack_a, t_stack *stack_b);
-void ft_update_index(t_stack *stack);
+void ft_update_target_a(t_stack **stack_a, t_stack **stack_b);
+void ft_update_target_b(t_stack **stack_a, t_stack **stack_b);
+void ft_update_index(t_stack **stack);
 void ft_update_node(t_stack **stack_a, t_stack **stack_b);
 
 //rule_p.c
@@ -99,11 +99,12 @@ void ss(t_stack **stack_a, t_stack **stack_b);
 void ft_tiny_sort(t_stack **stack_a, t_stack **stack_b);
 
 //turk.c
-void ft_count_cost_a(t_stack *stack_a);
-int ft_count_cost_b(t_node *current_a, t_stack *stack_b);
-void ft_calculate_total_cost(t_stack *stack_a, t_stack *stack_b);
-void ft_find_cheapest(t_stack *stack_a, t_stack *stack_b);
-void ft_cheapest_to_top(t_stack **stack_a, t_stack **stack_b);
+void ft_count_cost_a(t_stack **stack_a);
+int ft_count_cost_b(t_node **current_a, t_stack **stack_b);
+void ft_calculate_total_cost(t_stack **stack_a, t_stack **stack_b);
+void ft_find_cheapest(t_stack **stack_a, t_stack **stack_b);
+void ft_before_pb(t_stack **stack_a, t_stack **stack_b);
+
 
 //utils.c
 void increment_operation_count(void);

@@ -103,6 +103,7 @@ void ft_fill_stack(t_stack *stack_a, int argc, char **argv)
         ft_push_node(stack_a, value, 0);
         i++;
     }
+    ft_update_stack(stack_a);
 }
 
 void ft_display_stack(t_stack *stack_a, t_stack *stack_b)
