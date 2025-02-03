@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 15:43:20 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/26 20:47:11 by rei              ###   ########.fr       */
+/*   Updated: 2025/02/03 14:45:35 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-// typedef struct s_stack
-// {
-//     t_node *top;DONE
-//     t_node *bottom;DONE
-//     t_node *biggest;DONE
-//     t_node *smallest;DONE
-//     t_node *cheapest;
-//     int size;DONE
-// }   t_stack;
 
 void ft_update_top_bottom(t_stack *stack)
 {

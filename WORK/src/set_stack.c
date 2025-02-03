@@ -28,9 +28,6 @@ t_node *ft_ini_node(int value)
     return (new_node);
 }
 
-//to_top
-// 0: 1 2 3 4 5 -> 1 2 3 4 5
-// 1: 1 2 3 4 5 -> 5 4 3 2 1
 void ft_set_next(t_stack *stack, t_node *node, int to_top)
 {
     if(to_top || !stack->top)
@@ -124,8 +121,6 @@ void ft_fill_stack(t_stack *stack_a, int argc, char **argv)
 
 void ft_display_stack(t_stack *stack_a, t_stack *stack_b)
 {
-    // int i;
-    // i = 0;
     t_node *current_a;
     t_node *current_b;
     current_a = stack_a->top;

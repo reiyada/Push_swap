@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/02/03 11:08:12 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/03 14:31:42 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int ft_count_cost_b(t_node **current_a, t_stack **stack_b);
 void ft_calculate_total_cost(t_stack **stack_a, t_stack **stack_b);
 void ft_find_cheapest(t_stack **stack_a, t_stack **stack_b);
 void ft_before_pb(t_stack **stack_a, t_stack **stack_b);
+void ft_before_pa(t_stack **stack_a, t_stack **stack_b);
 
 
 //utils.c
@@ -115,7 +116,7 @@ int get_operation_count(void);
 void reset_operation_count(void);
 int ft_countstr(char **tab);
 void ft_free_tab(char **tab);
-void ft_free_stack(t_stack *stack);
+void ft_free_stack(t_stack **stack);
 int ft_is_sorted(t_stack *stack_a);
 
 #endif

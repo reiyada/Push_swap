@@ -1,7 +1,7 @@
 #include "../includes/push_swap.h"
 
-// operations.c
 static int g_operation_count = 0;
+
 void increment_operation_count(void)
 {
         g_operation_count++;
@@ -38,19 +38,22 @@ void ft_free_tab(char **tab)
     free (tab);
 }
 
-void ft_free_stack(t_stack *stack)
+void ft_free_stack(t_stack **stack)
 {
     t_node *current;
     t_node *next;
 
-    current = stack->top;
+    if (!stack)
+        return;
+    current = (*stack)->top;
     while (current)
     {
         next = current->next;
         free(current);
         current = next;
     }
-    free(stack);
+    free(*stack);
+    *stack = NULL;
 }
 
 int ft_is_sorted(t_stack *stack_a)
