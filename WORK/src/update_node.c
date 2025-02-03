@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:27:00 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/27 17:19:00 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/03 11:01:10 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,11 @@ void ft_update_target_a(t_stack **stack_a, t_stack **stack_b)
         else
         {
             current_b = (*stack_b)->top;
+            best_target = (*stack_b)->smallest;
             while (current_b)
             {
-                if (current_a->value > current_b->value &&
-                    (!current_b->next || current_a->value < current_b->next->value))
-                {
+                if (current_a->value > current_b->value && best_target->value < current_b->value)
                     best_target = current_b;
-                    break;
-                }
                 current_b = current_b->next;
             }
         }
@@ -209,10 +206,27 @@ void ft_update_index(t_stack **stack)
     }
 }
 
+void ft_update_mid(t_stack **stack)
+{
+    t_node *current;
+
+    current = (*stack)->top;
+    while (current)
+    {
+        if (current->index + 1 <= (*stack)->size / 2)
+            current->mid = true;
+        else
+            current->mid = false;
+        current = current->next;
+    }
+}
+
 void ft_update_node(t_stack **stack_a, t_stack **stack_b)
 {
     ft_update_target_a(stack_a, stack_b);
     ft_update_target_b(stack_a, stack_b);
     ft_update_index(stack_a);
     ft_update_index(stack_b);
+    ft_update_mid(stack_a);
+    ft_update_mid(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/27 17:31:52 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/03 11:34:08 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,26 @@ void ft_align_stack_a(t_stack **stack_a, t_stack **stack_b)
 
 void ft_sort_large_stack(t_stack **stack_a, t_stack **stack_b)
 {
-    // printf("Sorting large stack:\n");
-    // ft_display_stack(*stack_a, *stack_b);
+    ft_display_stack(*stack_a, *stack_b);
     while ((*stack_b)->size < 2)
     {  
         pb(stack_b, stack_a);
-        // ft_display_stack(*stack_a, *stack_b);
+        ft_display_stack(*stack_a, *stack_b);
     }
     // Push all but 3 elements from A to B
     while ((*stack_a)->size > 3)
     {
-        //ft_find_cheapest(stack_a, stack_b);
-        // printf("Cheapest node in A: %d\n", (*stack_a)->cheapest->value);
-        ft_update_node(stack_a, stack_b);
         ft_before_pb(stack_a, stack_b);
         pb(stack_b, stack_a);
-        (*stack_a)->cheapest = NULL;
+        ft_display_stack(*stack_a, *stack_b);
+        // printf("-------------------------------------\n");
+        // t_node *current_a = (*stack_a)->top;
+        // while (current_a)
+        // {
+        //     printf("[%d]%d : (target)%d (cost)%d\n", current_a->index, current_a->value, current_a->target->value, current_a->cost);
+        //     current_a = current_a->next;
+        // }
+        // printf("-------------------------------------\n");
         // ft_display_stack(*stack_a, *stack_b);
     }
     ft_before_pb(stack_a, stack_b);
@@ -102,7 +106,7 @@ void ft_sort_large_stack(t_stack **stack_a, t_stack **stack_b)
         // printf("Pushing elements from B to A\n");
        // printf("Top B[%d] -> Target[%d]\n", (*stack_b)->top->value, (*stack_b)->top->target->value);
         ft_update_node(stack_a, stack_b);
-        if ((*stack_b)->top->target->index < (*stack_a)->size / 2)
+        if ((*stack_b)->top->target->mid)
         {
             ft_display_stack(*stack_a, *stack_b);
             printf("Top B:%d   Target of top B: %d\n", (*stack_b)->top->value, (*stack_b)->top->target->value);

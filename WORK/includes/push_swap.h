@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:21:30 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/27 17:19:50 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/03 11:08:12 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_node
     int value;
     int cost;
     int index;
+    bool mid;
 }   t_node;
 
 typedef struct s_stack
@@ -57,6 +58,7 @@ t_node *ft_ini_node(int value);
 void ft_set_next(t_stack *stack, t_node *node, int to_top);
 void ft_set_top_bottom(t_stack *stack, t_node *node);
 void ft_set_index(t_stack *stack);
+void ft_set_mid(t_stack *stack);
 void ft_push_node(t_stack *stack_a, int value, int to_top);
 void ft_fill_stack(t_stack *stack_a, int argc, char **argv);
 void ft_display_stack(t_stack *stack_a, t_stack *stack_b);//DELETE
@@ -72,6 +74,7 @@ void ft_update_stack(t_stack *stack);
 void ft_update_target_a(t_stack **stack_a, t_stack **stack_b);
 void ft_update_target_b(t_stack **stack_a, t_stack **stack_b);
 void ft_update_index(t_stack **stack);
+void ft_update_mid(t_stack **stack);
 void ft_update_node(t_stack **stack_a, t_stack **stack_b);
 
 //rule_p.c

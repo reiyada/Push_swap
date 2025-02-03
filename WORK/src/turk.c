@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:34:26 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/27 17:09:16 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/03 11:26:07 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,17 +109,16 @@
 void ft_count_cost_a(t_stack **stack_a)
 {
     t_node *current;
-    int forward_cost; //ra
-    int reverse_cost; //rra
 
     if (!stack_a || (*stack_a)->size <= 1)
         return;
     current = (*stack_a)->top;
     while (current)
     {
-        forward_cost = current->index;
-        reverse_cost = (*stack_a)->size - current->index;
-        current->cost = (forward_cost < reverse_cost) ? forward_cost : reverse_cost;
+        if(current->mid)
+            current->cost = current->index;
+        else
+            current->cost = (*stack_a)->size - current->index;
         current = current->next;
     }
 }
@@ -127,15 +126,14 @@ void ft_count_cost_a(t_stack **stack_a)
 int ft_count_cost_b(t_node **current_a, t_stack **stack_b)
 {
     t_node *target_node;
-    int forward_cost;
-    int reverse_cost;
 
     if (!stack_b || (*stack_b)->size == 0 || !(*current_a)->target)
         return (0);
     target_node = (*current_a)->target;
-    forward_cost = target_node->index;
-    reverse_cost = (*stack_b)->size - target_node->index;
-    return ((forward_cost < reverse_cost) ? forward_cost : reverse_cost);
+    if(target_node->mid)
+        return(target_node->index);
+    else
+        return ((*stack_b)->size - target_node->index);
 }
 
 void ft_calculate_total_cost(t_stack **stack_a, t_stack **stack_b)
@@ -153,6 +151,7 @@ void ft_calculate_total_cost(t_stack **stack_a, t_stack **stack_b)
         //printf("[%d]%d's target:[%d]%d\n", current_a->index, current_a->value, current_a->target->index, current_a->target->value);
         cost_a = current_a->cost;
         cost_b = ft_count_cost_b(&current_a, stack_b);
+        //printf("cost of A: %d cost of B: %d\n", current_a->cost, cost_b);
         current_a->cost = cost_a + cost_b;
         current_a = current_a->next;
     }
@@ -168,7 +167,7 @@ void ft_find_cheapest(t_stack **stack_a, t_stack **stack_b)
     cheapest = current;
     while (current)
     {
-        if (current->cost <= cheapest->cost)
+        if (current->cost < cheapest->cost)
             cheapest = current;
         current = current->next;
     }
@@ -290,10 +289,10 @@ void ft_before_pb(t_stack **stack_a, t_stack **stack_b)
     ft_find_cheapest(stack_a, stack_b);
     cheapest_in_a = (*stack_a)->cheapest;
     target_in_b = (*stack_a)->cheapest->target;
-    if (cheapest_in_a->index != 0 && target_in_b->index != 0)
+    if (cheapest_in_a->index != 0 || target_in_b->index != 0)
     {
         //both r
-        if ((cheapest_in_a->index < (*stack_a)->size - cheapest_in_a->index) && (target_in_b->index < (*stack_b)->size - target_in_b->index))
+        if (cheapest_in_a->mid && target_in_b->mid)
         {
             while (cheapest_in_a->index > 0 && target_in_b->index > 0)
                 rr(stack_a, stack_b);
@@ -303,7 +302,7 @@ void ft_before_pb(t_stack **stack_a, t_stack **stack_b)
                 rb(stack_b, stack_a, false);
         }
         //both rr
-        else if ((cheapest_in_a->index > (*stack_a)->size - cheapest_in_a->index) && (target_in_b->index > (*stack_b)->size - target_in_b->index))
+        else if (!(cheapest_in_a->mid) && !(target_in_b->mid))
         {
             while (cheapest_in_a->index > 0 && target_in_b->index > 0)
                 rrr(stack_a, stack_b);
@@ -314,15 +313,14 @@ void ft_before_pb(t_stack **stack_a, t_stack **stack_b)
         }
         else
         {
-            while ((cheapest_in_a->index < (*stack_a)->size - cheapest_in_a->index) && cheapest_in_a->index > 0 && target_in_b->index == 0)
+            while ((cheapest_in_a->mid) && cheapest_in_a->index > 0 && target_in_b->index == 0)
                 ra(stack_a, stack_b, false);
-            while ((target_in_b->index < (*stack_b)->size - target_in_b->index) && target_in_b->index > 0 && cheapest_in_a->index == 0)
+            while ((target_in_b->mid) && target_in_b->index > 0 && cheapest_in_a->index == 0)
                 rb(stack_b, stack_a, false);
-            while ((cheapest_in_a->index > (*stack_a)->size - cheapest_in_a->index) && cheapest_in_a->index > 0 && target_in_b->index == 0)
+            while (!(cheapest_in_a->mid)&& cheapest_in_a->index > 0 && target_in_b->index == 0)
                 rra(stack_a, stack_b, false);
-            while ((target_in_b->index > (*stack_b)->size - target_in_b->index) && target_in_b->index > 0 && cheapest_in_a->index == 0)
+            while (!(target_in_b->mid) && target_in_b->index > 0 && cheapest_in_a->index == 0)
                 rrb(stack_b, stack_a, false);
         }
-        
     }
 }

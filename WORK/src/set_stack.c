@@ -68,6 +68,21 @@ void ft_set_index(t_stack *stack)
     }
 }
 
+void ft_set_mid(t_stack *stack)
+{
+    t_node *current;
+
+    current = stack->top;
+    while (current)
+    {
+        if (current->index + 1 <= (stack->size / 2))
+            current->mid = true;
+        else
+            current->mid = false;
+        current = current->next;
+    }
+}
+
 void ft_push_node(t_stack *stack_a, int value, int to_top)
 {
     t_node *new_node;
@@ -78,6 +93,7 @@ void ft_push_node(t_stack *stack_a, int value, int to_top)
     ft_set_next(stack_a, new_node, to_top);
     ft_set_top_bottom(stack_a, new_node);
     ft_set_index(stack_a);
+    ft_set_mid(stack_a);
     stack_a->size++;
 }
 
