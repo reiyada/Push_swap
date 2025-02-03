@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:35:32 by ryada             #+#    #+#             */
-/*   Updated: 2025/02/03 14:42:44 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/03 16:48:39 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void pa(t_stack **stack_a, t_stack **stack_b)
     ft_push(stack_a, stack_b);
     ft_update_node(stack_a, stack_b);
     ft_printf("pa\n");
+    ft_display_stack(*stack_a, *stack_b);
 }
 
 void pb(t_stack **stack_b, t_stack **stack_a)
@@ -42,4 +43,5 @@ void pb(t_stack **stack_b, t_stack **stack_a)
     ft_push(stack_b, stack_a);
     ft_update_node(stack_a, stack_b);
     ft_printf("pb\n");
+    ft_display_stack(*stack_a, *stack_b);
 }

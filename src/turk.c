@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:34:26 by ryada             #+#    #+#             */
-/*   Updated: 2025/02/03 14:53:37 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/03 17:18:52 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,57 @@ int ft_count_cost_b(t_node **current_a, t_stack **stack_b)
         return ((*stack_b)->size - target_node->index);
 }
 
+int ft_two_moves(t_node *stack_a, t_node *stack_b)
+{
+    int i;
+
+    i = 0;
+    if (stack_a->mid && stack_b->mid)
+    {
+        printf("1\n");
+        while (stack_a->index != 0 && stack_b->index != 0)
+            i++;
+            //rr(stack_a, stack_b);
+        printf("2\n");   
+        while (stack_a->index != 0 && stack_b->index == 0)
+            i++;
+            //ra(stack_a, stack_b, false);
+        while (stack_b->index != 0 && stack_a->index == 0)
+            i++;
+            //rb(stack_b, stack_a, false);
+    }
+    else if (!(stack_a->mid) && !(stack_b->mid))
+    {
+        printf("3\n");
+        while (stack_a->index != 0 && stack_b->index != 0)
+            i++;
+            //rrr(stack_a, stack_b);
+        while (stack_a->index != 0 && stack_b->index == 0)
+            i++;
+            //rra(stack_a, stack_b, false);
+        while (stack_b->index != 0 && stack_a->index == 0)
+            i++;
+            //rrb(stack_b, stack_a, false);
+    }
+    else
+    {
+        printf("4\n");
+        while ((stack_a->mid) && stack_a->index != 0)
+            i++;
+            //ra(stack_a, stack_b, false);
+        while ((stack_b->mid) && stack_b->index != 0)
+            i++;
+            //rb(stack_b, stack_a, false);
+        while (!(stack_a->mid)&& stack_a->index != 0)
+            i++;
+            //rra(stack_a, stack_b, false);
+        while (!(stack_b->mid) && stack_b->index != 0)
+            i++;
+            //rrb(stack_b, stack_a, false);
+    }
+    return(i);
+}
+
 void ft_calculate_total_cost(t_stack **stack_a, t_stack **stack_b)
 {
     t_node *current_a;
@@ -54,9 +105,14 @@ void ft_calculate_total_cost(t_stack **stack_a, t_stack **stack_b)
     current_a = (*stack_a)->top;
     while (current_a)
     {
-        cost_a = current_a->cost;
-        cost_b = ft_count_cost_b(&current_a, stack_b);
-        current_a->cost = cost_a + cost_b;
+        if (current_a->index != 0 && current_a->target->index != 0)
+            current_a->cost = ft_two_moves(current_a, current_a->target);
+        else
+        {
+            cost_a = current_a->cost;
+            cost_b = ft_count_cost_b(&current_a, stack_b);
+            current_a->cost = cost_a + cost_b;
+        }
         current_a = current_a->next;
     }
 }
@@ -69,12 +125,16 @@ void ft_find_cheapest(t_stack **stack_a, t_stack **stack_b)
     ft_calculate_total_cost(stack_a, stack_b);
     current = (*stack_a)->top;
     cheapest = current;
+    printf("-----------------------------------\n");
     while (current)
     {
+        printf("[%d]%d (cost)%d\n", current->index, current->value, current->cost);
         if (current->cost < cheapest->cost)
             cheapest = current;
         current = current->next;
     }
+    printf("-----------------------------------\n");
+    printf("Cheapest:[%d]%d\n", cheapest->index, cheapest->value);
     (*stack_a)->cheapest = cheapest;
 }
 
