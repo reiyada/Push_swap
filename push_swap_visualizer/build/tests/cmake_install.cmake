@@ -1,4 +1,4 @@
-# Install script for directory: /home/rei/42/Common core/02Push_sawp/push_swap_visualizer/tests
+# Install script for directory: /home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,3 +1,3 @@
-/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/catch2-subbuild/CMakeFiles/catch2-populate.dir
-/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/catch2-subbuild/CMakeFiles/edit_cache.dir
-/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/catch2-subbuild/CMakeFiles/rebuild_cache.dir
+/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/catch2-subbuild/CMakeFiles/catch2-populate.dir
+/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/catch2-subbuild/CMakeFiles/edit_cache.dir
+/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/catch2-subbuild/CMakeFiles/rebuild_cache.dir

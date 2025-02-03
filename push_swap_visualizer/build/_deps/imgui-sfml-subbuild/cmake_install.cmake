@@ -1,4 +1,4 @@
-# Install script for directory: /home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild
+# Install script for directory: /home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

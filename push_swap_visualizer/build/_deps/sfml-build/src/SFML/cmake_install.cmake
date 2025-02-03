@@ -1,4 +1,4 @@
-# Install script for directory: /home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/sfml-src/src/SFML
+# Install script for directory: /home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/sfml-src/src/SFML
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,9 +44,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/sfml-build/src/SFML/System/cmake_install.cmake")
-  include("/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/sfml-build/src/SFML/Window/cmake_install.cmake")
-  include("/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/sfml-build/src/SFML/Graphics/cmake_install.cmake")
+  include("/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/sfml-build/src/SFML/System/cmake_install.cmake")
+  include("/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/sfml-build/src/SFML/Window/cmake_install.cmake")
+  include("/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/sfml-build/src/SFML/Graphics/cmake_install.cmake")
 
 endif()
 

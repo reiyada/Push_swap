@@ -1,20 +1,14 @@
-# Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
-# file Copyright.txt or https://cmake.org/licensing for details.
-
-cmake_minimum_required(VERSION 3.5)
-
 # Make file names absolute:
 #
-get_filename_component(filename "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/sfml-subbuild/sfml-populate-prefix/src/SFML-2.5.1-sources.zip" ABSOLUTE)
-get_filename_component(directory "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/sfml-src" ABSOLUTE)
+get_filename_component(filename "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/sfml-subbuild/sfml-populate-prefix/src/SFML-2.5.1-sources.zip" ABSOLUTE)
+get_filename_component(directory "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/sfml-src" ABSOLUTE)
 
 message(STATUS "extracting...
      src='${filename}'
-     dst='${directory}'"
-)
+     dst='${directory}'")
 
 if(NOT EXISTS "${filename}")
-  message(FATAL_ERROR "File to extract does not exist: '${filename}'")
+  message(FATAL_ERROR "error: file to extract does not exist: '${filename}'")
 endif()
 
 # Prepare a space for extracting:
@@ -29,15 +23,14 @@ file(MAKE_DIRECTORY "${ut_dir}")
 # Extract it:
 #
 message(STATUS "extracting... [tar xfz]")
-execute_process(COMMAND ${CMAKE_COMMAND} -E tar xfz ${filename} 
+execute_process(COMMAND ${CMAKE_COMMAND} -E tar xfz ${filename}
   WORKING_DIRECTORY ${ut_dir}
-  RESULT_VARIABLE rv
-)
+  RESULT_VARIABLE rv)
 
 if(NOT rv EQUAL 0)
   message(STATUS "extracting... [error clean up]")
   file(REMOVE_RECURSE "${ut_dir}")
-  message(FATAL_ERROR "Extract of '${filename}' failed")
+  message(FATAL_ERROR "error: extract of '${filename}' failed")
 endif()
 
 # Analyze what came out of the tar file:

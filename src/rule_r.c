@@ -3,129 +3,118 @@
 /*                                                        :::      ::::::::   */
 /*   rule_r.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:56:58 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/24 11:11:18 by rei              ###   ########.fr       */
+/*   Updated: 2025/02/03 14:43:16 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-
-void ft_top_to_bottom(t_stack *stack)
+void ft_top_to_bottom(t_stack **stack_move)
 {
     t_node *temp;
 
-    if (stack->size < 2)
+    if (!stack_move || !(*stack_move) || (*stack_move)->size < 2)
         return;
-    temp = stack->top;
-    stack->top = stack->top->next;
-    stack->bottom->next = temp;
-    stack->bottom = temp;
+
+    temp = (*stack_move)->top;
+    (*stack_move)->top = (*stack_move)->top->next;
+    if (!(*stack_move)->top)
+        (*stack_move)->bottom = NULL;
+    else
+        (*stack_move)->bottom->next = temp;
+
+    (*stack_move)->bottom = temp;
     temp->next = NULL;
-    increment_operation_count();
-    ft_assign_index(stack);
 }
 
-//1 2 3 4 5 -> 2 3 4 5 1
-void ra(t_stack *stack_a, bool print)
+void ft_bottom_to_top(t_stack **stack_move)
 {
-    ft_top_to_bottom(stack_a);// same as stack_a->bottom->next = NULL but this is prefered
-    if (print == false)
-        ft_printf("ra\n");
+    t_node *prev = NULL;
+    t_node *last;
+
+    if (!stack_move || !(*stack_move) || (*stack_move)->size < 2)
+        return;
+
+    last = (*stack_move)->top;
+
+    while (last->next)
+    {
+        prev = last;
+        last = last->next;
+    }
+    if (!prev || !last)
+        return;
+    prev->next = NULL;
+    last->next = (*stack_move)->top;
+    (*stack_move)->top = last;
+    (*stack_move)->bottom = prev;
 }
 
-void rb(t_stack *stack_b, bool print)
+void ra(t_stack **stack_a, t_stack **stack_b, bool print)
+{
+    ft_top_to_bottom(stack_a);
+    ft_update_node(stack_a, stack_b);
+    ft_update_stack(*stack_a);
+    if (print == false)
+    {
+        ft_printf("ra\n");
+        increment_operation_count();
+    }
+}
+
+void rb(t_stack **stack_b, t_stack **stack_a, bool print)
 {
     ft_top_to_bottom(stack_b);
+    ft_update_node(stack_b, stack_a);
+    ft_update_stack(*stack_b);
     if (print == false)
+    {
         ft_printf("rb\n");
+        increment_operation_count();
+    }
 }
 
-void rr(t_stack *stack_a, t_stack *stack_b)
+void rr(t_stack **stack_a, t_stack **stack_b)
 {
-    ra(stack_a, true);
-    rb(stack_b, true);
+    ra(stack_a, stack_b, true);
+    rb(stack_b, stack_a, true);
+    increment_operation_count();
     ft_printf("rr\n");
 }
 
-//1 2 3 4 5 -> 5 1 2 3 4
-// void rra(t_stack *stack_a, bool print)
-// {
-//     t_node *current;
-//     t_node *prev;
-
-//     if (stack_a->size < 2)
-//         return;
-//     current = stack_a->top;
-//     prev = NULL;
-//     while (current->next != NULL) // to set prev as the one before the bottom
-//     {
-//         prev = current;
-//         current = current->next;
-//     }
-//     prev->next = NULL; //the bottom
-//     current->next = stack_a->top; //connect the top of stack_a to the bottom
-//     stack_a->top = current; //update the new top
-//     stack_a->bottom = prev; //update the bttom
-//     if (print == false)
-//         ft_printf("rra\n");
-// }
-
-void rra(t_stack *stack_a, bool print)
+void rra(t_stack **stack_a, t_stack **stack_b, bool print)
 {
-    t_node *current;
+    ft_bottom_to_top(stack_a);
+    ft_update_stack(*stack_a);
+    ft_update_node(stack_a, stack_b);
 
-    if (stack_a->size < 2)
-        return;
-    current = stack_a->top;
-    while (current != stack_a->bottom)
-        ra(stack_a, true);
-    if (print == false)
+    if (!print)
+    {
         ft_printf("rra\n");
-    ft_assign_index(stack_a);
+        increment_operation_count();
+    }
 }
 
-// void rrb(t_stack *stack_b, bool print)
-// {
-//     t_node *current;
-//     t_node *prev;
 
-//     if (stack_b->size < 2)
-//         return;
-//     current = stack_b->top;
-//     prev = NULL;
-//     while (current->next != NULL) // to set prev as the one before the bottom
-//     {
-//         prev = current;
-//         current = current->next;
-//     }
-//     prev->next = NULL; //the bottom
-//     current->next = stack_b->top; //connect the top of stack_b to the bottom
-//     stack_b->top = current; //update the new top
-//     stack_b->bottom = prev; //update the bttom
-//     if (print == false)
-//         ft_printf("rrb\n");
-// }
-
-void rrb(t_stack *stack_b, bool print)
+void rrb(t_stack **stack_b, t_stack **stack_a,bool print)
 {
-    t_node *current;
-
-    if (stack_b->size < 2)
-        return;
-    current = stack_b->top;
-    while (current != stack_b->bottom)
-        ra(stack_b, true);
+    ft_bottom_to_top(stack_b);
+    ft_update_node(stack_b, stack_a);
+    ft_update_stack(*stack_b);
     if (print == false)
+    {
         ft_printf("rrb\n");
-    ft_assign_index(stack_b);
+        increment_operation_count();
+    }
 }
 
-void rrr(t_stack *stack_a, t_stack *stack_b)
+void rrr(t_stack **stack_a, t_stack **stack_b)
 {
-    rra(stack_a, true);
-    rrb(stack_b, true);
+    rra(stack_a, stack_b, true);
+    rrb(stack_b, stack_a, true);
+    increment_operation_count();
     ft_printf("rrr\n");
 }

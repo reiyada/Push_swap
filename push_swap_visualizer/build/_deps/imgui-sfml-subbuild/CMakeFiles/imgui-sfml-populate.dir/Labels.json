@@ -2,37 +2,37 @@
 	"sources" : 
 	[
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate"
 		},
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate.rule"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate.rule"
 		},
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate-complete.rule"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/CMakeFiles/imgui-sfml-populate-complete.rule"
 		},
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-build.rule"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-build.rule"
 		},
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-configure.rule"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-configure.rule"
 		},
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-download.rule"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-download.rule"
 		},
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-install.rule"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-install.rule"
 		},
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-mkdir.rule"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-mkdir.rule"
 		},
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-patch.rule"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-patch.rule"
 		},
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-test.rule"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-test.rule"
 		},
 		{
-			"file" : "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-update.rule"
+			"file" : "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/imgui-sfml-subbuild/imgui-sfml-populate-prefix/src/imgui-sfml-populate-stamp/imgui-sfml-populate-update.rule"
 		}
 	],
 	"target" : 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/sfml-src/src/SFML/System
+# Install script for directory: /home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/sfml-src/src/SFML/System
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -42,7 +42,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
-if(CMAKE_INSTALL_COMPONENT STREQUAL "bin" OR NOT CMAKE_INSTALL_COMPONENT)
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xbinx" OR NOT CMAKE_INSTALL_COMPONENT)
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsfml-system.so.2.5.1"
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsfml-system.so.2.5"
@@ -55,8 +55,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "bin" OR NOT CMAKE_INSTALL_COMPONENT)
     endif()
   endforeach()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
-    "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/sfml-build/lib/libsfml-system.so.2.5.1"
-    "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/sfml-build/lib/libsfml-system.so.2.5"
+    "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/sfml-build/lib/libsfml-system.so.2.5.1"
+    "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/sfml-build/lib/libsfml-system.so.2.5"
     )
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsfml-system.so.2.5.1"
@@ -71,7 +71,19 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "bin" OR NOT CMAKE_INSTALL_COMPONENT)
   endforeach()
 endif()
 
-if(CMAKE_INSTALL_COMPONENT STREQUAL "bin" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/_deps/sfml-build/lib/libsfml-system.so")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xbinx" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsfml-system.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsfml-system.so")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsfml-system.so"
+         RPATH "")
+  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/_deps/sfml-build/lib/libsfml-system.so")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsfml-system.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsfml-system.so")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsfml-system.so")
+    endif()
+  endif()
 endif()
 

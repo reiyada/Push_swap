@@ -3,53 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   rule_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:35:32 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/24 11:10:09 by rei              ###   ########.fr       */
+/*   Updated: 2025/02/03 14:42:44 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void pa(t_stack *stack_a, t_stack *stack_b)
+void ft_push(t_stack **stack_to, t_stack **stack_from)
 {
     t_node *temp;
-    if (!stack_b->top)
+    if (!(*stack_from) || !(*stack_from)->top)
         return;
-    temp = stack_b->top;
-    stack_b->top = stack_b->top->next;
-    if(!stack_b->top)
-        stack_b->bottom = NULL;
-    stack_b->size--;
-    temp->next = stack_a->top;
-    stack_a->top = temp;
-    if (!stack_a->bottom)
-        stack_a->bottom = temp;
-    stack_a->size++;
-    ft_printf("pa\n");
+    temp = (*stack_from)->top;
+    (*stack_from)->top = (*stack_from)->top->next;
+    if (!(*stack_from)->top)
+        (*stack_from)->bottom = NULL;
+    temp->next = (*stack_to)->top;
+    (*stack_to)->top = temp;
+    if (!(*stack_to)->bottom)
+        (*stack_to)->bottom = temp;
+    ft_update_stack(*stack_to);
+    ft_update_stack(*stack_from);
     increment_operation_count();
-    ft_assign_index(stack_a);
-    ft_assign_index(stack_b);
 }
 
-void pb(t_stack *stack_b, t_stack *stack_a)
+void pa(t_stack **stack_a, t_stack **stack_b)
 {
-    t_node *temp;
-    if (!stack_a->top)
-        return;
-    temp = stack_a->top;
-    stack_a->top = stack_a->top->next;
-    if(!stack_a->top)
-        stack_a->bottom = NULL;
-    stack_a->size--;
-    temp->next = stack_b->top;
-    stack_b->top = temp;
-    if (!stack_b->bottom)
-        stack_b->bottom = temp;
-    stack_b->size++;
+    ft_push(stack_a, stack_b);
+    ft_update_node(stack_a, stack_b);
+    ft_printf("pa\n");
+}
+
+void pb(t_stack **stack_b, t_stack **stack_a)
+{
+    ft_push(stack_b, stack_a);
+    ft_update_node(stack_a, stack_b);
     ft_printf("pb\n");
-    increment_operation_count();
-    ft_assign_index(stack_a);
-    ft_assign_index(stack_b);
 }

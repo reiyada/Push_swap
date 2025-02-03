@@ -6,7 +6,7 @@
 /*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:45:49 by ryada             #+#    #+#             */
-/*   Updated: 2025/01/24 17:02:42 by rei              ###   ########.fr       */
+/*   Updated: 2025/01/26 19:35:22 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int ft_check_digit(int argc, char **argv)
     int j;
     if (argc == 2)
         i = 0;
-    if (argc > 2)
+    else
         i = 1;
     while(argv[i])
     {
@@ -36,9 +36,9 @@ int ft_check_digit(int argc, char **argv)
             j++;
         if (argv[i][j] == '\0')
             return (0);
-        if (argv[i][0] == '-' || argv[i][0] == '+')
+        if (argv[i][j] == '-' || argv[i][j] == '+')
         {
-            if (argv[i][j] == '\0')
+            if (argv[i][j + 1] == '\0')
                 return (0);
             j++;
         }
@@ -92,10 +92,10 @@ int ft_check_dup(int argc, char **argv)
     int i;
     int j;
 
-    if (argc > 2)
-        i = 1;
-    else if (argc == 2)
+    if (argc == 2)
         i = 0;
+    else
+        i = 1;
     while (argv[i])
     {
         j = i + 1;
@@ -112,13 +112,13 @@ int ft_check_dup(int argc, char **argv)
 
 int ft_error(int argc, char **argv)
 {
-    if (ft_check_argc(argc) == 0)
+    if (!ft_check_argc(argc))
         return (0);
-    if (ft_check_digit(argc, argv) == 0)
+    if (!ft_check_digit(argc, argv))
         return (0);
-    else if (ft_check_range(argc, argv) == 0)
+    else if (!ft_check_range(argc, argv))
         return (0);
-    else if (ft_check_dup(argc, argv) == 0)
+    else if (!ft_check_dup(argc, argv))
         return (0);
     return (1);
 }

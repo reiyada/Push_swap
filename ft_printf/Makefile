@@ -6,7 +6,7 @@
 #    By: ryada <ryada@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 08:40:34 by ryada             #+#    #+#              #
-#    Updated: 2024/11/20 11:31:36 by ryada            ###   ########.fr        #
+#    Updated: 2025/02/03 15:50:37 by ryada            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,9 +47,11 @@ CFLAGS = -Wall -Wextra -Werror
 
 # Rules
 all: $(NAME)
+	@echo "✅ ft_printf compiled successfully."
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
+	@echo "📦 Archive created: $(NAME)"
 
 # Compile libft
 $(LIBFT_DIR)/%.o: $(LIBFT_DIR)/%.c
@@ -65,9 +67,11 @@ $(SRCS_DIR)/%.o: $(SRCS_DIR)/%.c
 
 clean:
 	@rm -f $(OBJS)
+	@echo "🧹 Cleaned object files of $(NAME)!"
 
 fclean: clean
 	@rm -f $(NAME)
+	@echo "🗑️ Removed executable and object files of $(NAME)!"
 
 re: fclean all
 

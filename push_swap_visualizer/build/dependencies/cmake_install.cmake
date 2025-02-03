@@ -1,4 +1,4 @@
-# Install script for directory: /home/rei/42/Common core/02Push_sawp/push_swap_visualizer/dependencies
+# Install script for directory: /home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/dependencies
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,16 +44,16 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/dependencies/imgui-sfml/cmake_install.cmake")
+  include("/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/dependencies/imgui-sfml/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/dependencies/sfml/cmake_install.cmake")
+  include("/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/dependencies/sfml/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rei/42/Common core/02Push_sawp/push_swap_visualizer/build/dependencies/catch2/cmake_install.cmake")
+  include("/home/ryada/42/Common Core/Push_swap/WORK/push_swap_visualizer/build/dependencies/catch2/cmake_install.cmake")
 endif()
 
