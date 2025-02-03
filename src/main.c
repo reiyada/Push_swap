@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:16:40 by ryada             #+#    #+#             */
-/*   Updated: 2025/02/03 18:46:41 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/03 21:12:27 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main (int argc, char **argv)
         ft_push_swap_turk(&stack_a, &stack_b, argc, argv);
     }
     //ft_display_stack(stack_a, stack_b);
-    printf("operation Count: %d\n", get_operation_count());
+    //printf("operation Count: %d\n", get_operation_count());
     ft_free_stack(&stack_a);
     ft_free_stack(&stack_b);
     return (0);

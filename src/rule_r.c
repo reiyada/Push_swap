@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rule_r.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:56:58 by ryada             #+#    #+#             */
-/*   Updated: 2025/02/03 18:30:59 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/03 21:11:08 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void ra(t_stack **stack_a, t_stack **stack_b, bool print)
         ft_printf("ra\n");
         increment_operation_count();
     }
-    ft_display_stack(*stack_a, *stack_b);
+    //ft_display_stack(*stack_a, *stack_b);
 }
 
 void rb(t_stack **stack_b, t_stack **stack_a, bool print)
@@ -76,7 +76,7 @@ void rb(t_stack **stack_b, t_stack **stack_a, bool print)
         ft_printf("rb\n");
         increment_operation_count();
     }
-    ft_display_stack(*stack_a, *stack_b);
+    //ft_display_stack(*stack_a, *stack_b);
 }
 
 void rr(t_stack **stack_a, t_stack **stack_b)
@@ -98,7 +98,7 @@ void rra(t_stack **stack_a, t_stack **stack_b, bool print)
         ft_printf("rra\n");
         increment_operation_count();
     }
-    ft_display_stack(*stack_a, *stack_b);
+    //ft_display_stack(*stack_a, *stack_b);
 }
 
 
@@ -112,7 +112,7 @@ void rrb(t_stack **stack_b, t_stack **stack_a,bool print)
         ft_printf("rrb\n");
         increment_operation_count();
     }
-    ft_display_stack(*stack_a, *stack_b);
+    //ft_display_stack(*stack_a, *stack_b);
 }
 
 void rrr(t_stack **stack_a, t_stack **stack_b)

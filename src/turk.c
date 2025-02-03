@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rei <rei@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:34:26 by ryada             #+#    #+#             */
-/*   Updated: 2025/02/03 19:06:55 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/03 21:10:44 by rei              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void ft_count_cost_a(t_stack **stack_a)
             current->cost = current->index;
         else
             current->cost = (*stack_a)->size - current->index;
+        //printf("[%d]%d (cost)%d\n", current->index, current->value, current->cost);
         current = current->next;
     }
 }
@@ -37,9 +38,16 @@ int ft_count_cost_b(t_node **current_a, t_stack **stack_b)
         return (0);
     target_node = (*current_a)->target;
     if(target_node->mid)
+    {
+        //printf("[%d]%d (cost)%d\n", target_node->index, target_node->value, target_node->index);
         return(target_node->index);
+    }
     else
+    {
+        //printf("[%d]%d (cost)%d\n", target_node->index, target_node->value, (*stack_b)->size - target_node->index);
         return ((*stack_b)->size - target_node->index);
+    }
+        
 }
 
 void ft_calculate_total_cost(t_stack **stack_a, t_stack **stack_b)
@@ -58,23 +66,16 @@ void ft_calculate_total_cost(t_stack **stack_a, t_stack **stack_b)
         target = current_a->target;
         cost_a = current_a->cost;
         cost_b = ft_count_cost_b(&current_a, stack_b);
-        printf("[%d]%d :(MID) %d\n", current_a->index, current_a->value, current_a->mid);
-        if (cost_a && cost_b)
+        //printf("[%d]%d (cost A)%d | TARGET[%d]%d (cost B)%d\n", current_a->index, current_a->value, current_a->cost, target->index, target->value, cost_b);
+        //printf("[%d]%d :(MID) %d | Target[%d]%d : (MID) %d\n", current_a->index, current_a->value, current_a->mid, target->index, target->value, target->mid);
+        if ((current_a->mid && target->mid) || (!(current_a->mid) && !(target->mid)))
         {
-            if (current_a->mid && target->mid)
-            {
-                if (cost_a > cost_b)
-                    current_a->cost = cost_a;
-                else
-                    current_a->cost = cost_b;
-            }
-            else if (!(current_a->mid) && !(target->mid))
-            {
-                if (cost_a > cost_b)
-                    current_a->cost = cost_a;
-                else
-                    current_a->cost = cost_b;
-            }
+            //printf("ENTER\n");
+            //printf("ENTER[%d]%d :(MID) %d | Target[%d]%d : (MID) %d\n", current_a->index, current_a->value, current_a->mid, target->index, target->value, target->mid);
+            if (cost_a > cost_b)
+                current_a->cost = cost_a;
+            else
+                current_a->cost = cost_b;
         }
         else
             current_a->cost = cost_a + cost_b;
@@ -90,18 +91,18 @@ void ft_find_cheapest(t_stack **stack_a, t_stack **stack_b)
     ft_calculate_total_cost(stack_a, stack_b);
     current = (*stack_a)->top;
     cheapest = current;
-    printf("-----------------------------------\n");
+    //printf("-----------------------------------\n");
     while (current)
     {
-        printf("[%d]%d (target)%d (cost)%d\n", current->index, current->value, current->target->value, current->cost);
+        //printf("[%d]%d (target)%d (cost)%d\n", current->index, current->value, current->target->value, current->cost);
         if (current->cost < cheapest->cost)
             cheapest = current;
         // else if ((current->cost == cheapest->cost) && current->value < cheapest->value)
         //     cheapest = current;
         current = current->next;
     }
-    printf("-----------------------------------\n");
-    printf("Cheapest:[%d]%d\n", cheapest->index, cheapest->value);
+    //printf("-----------------------------------\n");
+    //printf("Cheapest:[%d]%d\n", cheapest->index, cheapest->value);
     (*stack_a)->cheapest = cheapest;
 }
 
