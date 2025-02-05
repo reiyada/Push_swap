@@ -1,145 +1,92 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_stack.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/05 13:07:35 by ryada             #+#    #+#             */
+/*   Updated: 2025/02/05 13:39:59 by ryada            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-void ft_ini_stack(t_stack *stack)
+void	ft_ini_stack(t_stack *stack)
 {
-    stack->top = NULL;
-    stack->bottom = NULL;
-    stack->size = 0;
-    stack->biggest = NULL;
-    stack->smallest = NULL;
-    stack->cheapest = NULL;
+	stack->top = NULL;
+	stack->bottom = NULL;
+	stack->size = 0;
+	stack->biggest = NULL;
+	stack->smallest = NULL;
+	stack->cheapest = NULL;
 }
 
-t_node *ft_ini_node(int value)
+void	ft_set_top_bottom(t_stack *stack, t_node *node)
 {
-    t_node *new_node;
-
-    new_node = malloc(sizeof(t_node));
-    if (!new_node)
-    {
-        ft_putstr_fd("Error\n", 2);
-        return (NULL);
-    }
-    new_node->value = value;
-    new_node->next = NULL;
-    new_node->target = NULL;
-    new_node->cost = 0;
-    new_node->index = 0;
-    return (new_node);
+	if (!stack->top)
+	{
+		stack->top = node;
+		stack->bottom = node;
+	}
+	else
+	{
+		stack->bottom->next = node;
+		stack->bottom = node;
+	}
 }
 
-void ft_set_next(t_stack *stack, t_node *node, int to_top)
+void	ft_set_index(t_stack *stack)
 {
-    if(to_top || !stack->top)
-        node->next = stack->top;
-    else if (stack->bottom)
-        stack->bottom->next = node;
+	t_node	*current;
+	int		i;
+
+	i = 0;
+	current = stack->top;
+	while (current)
+	{
+		current->index = i;
+		i++;
+		current = current->next;
+	}
 }
 
-void ft_set_top_bottom(t_stack *stack, t_node *node)
+void	ft_set_mid(t_stack *stack)
 {
-    if (!stack->top)
-    {
-        stack->top = node;
-        stack->bottom = node;
-    }
-    else
-    {
-        stack->bottom->next = node;
-        stack->bottom = node;
-    }
+	t_node	*current;
+
+	current = stack->top;
+	while (current)
+	{
+		if (current->index + 1 <= (stack->size / 2))
+			current->mid = true;
+		else
+			current->mid = false;
+		current = current->next;
+	}
 }
 
-void ft_set_index(t_stack *stack)
+void	ft_fill_stack(t_stack *stack_a, int argc, char **argv)
 {
-    t_node *current;
-    int i;
+	int	i;
+	int	size;
+	int	value;
 
-    i = 0;
-    current = stack->top;
-    while (current)
-    {
-        current->index = i;
-        i++;
-        current = current->next;
-    }
-}
-
-void ft_set_mid(t_stack *stack)
-{
-    t_node *current;
-
-    current = stack->top;
-    while (current)
-    {
-        if (current->index + 1 <= (stack->size / 2))
-            current->mid = true;
-        else
-            current->mid = false;
-        current = current->next;
-    }
-}
-
-void ft_push_node(t_stack *stack_a, int value, int to_top)
-{
-    t_node *new_node;
-
-    new_node = ft_ini_node(value);
-    if (!new_node)
-        return (ft_putstr_fd("Error\n", 2));
-    ft_set_next(stack_a, new_node, to_top);
-    ft_set_top_bottom(stack_a, new_node);
-    ft_set_index(stack_a);
-    ft_set_mid(stack_a);
-    stack_a->size++;
-}
-
-void ft_fill_stack(t_stack *stack_a, int argc, char **argv)
-{
-    int i;
-    int size;
-    int value;
-
-    if (argc == 2)
-    {
-        i = 0;
-        size = ft_countstr(argv);
-    }
-    else
-    {
-        i = 1;
-        size = argc;
-    }
-    while (i < size)
-    {
-        value = ft_atoi(argv[i]);
-        ft_push_node(stack_a, value, 0);
-        i++;
-    }
-    ft_update_stack(stack_a);
-}
-
-void ft_display_stack(t_stack *stack_a, t_stack *stack_b)
-{
-    t_node *current_a;
-    t_node *current_b;
-    current_a = stack_a->top;
-    current_b = stack_b->top;
-    ft_printf("    A B\n");
-    while(current_a || current_b)
-    {
-        if (current_a)
-        {
-            ft_printf("[%d] %d",current_a->index, current_a->value);
-            current_a = current_a->next;
-        }
-        else
-            ft_printf("  "); //2 spaces
-        if (current_b)
-        {
-            ft_printf("[%d] %d", current_b->index, current_b->value);
-            current_b = current_b->next;
-        }
-        ft_printf("\n");
-    }
+	if (argc == 2)
+	{
+		i = 0;
+		size = ft_countstr(argv);
+	}
+	else
+	{
+		i = 1;
+		size = argc;
+	}
+	while (i < size)
+	{
+		value = ft_atoi(argv[i]);
+		ft_push_node(stack_a, value, 0);
+		i++;
+	}
+	ft_update_stack(stack_a);
 }

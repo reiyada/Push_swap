@@ -6,7 +6,7 @@
 #    By: ryada <ryada@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 17:05:33 by ryada             #+#    #+#              #
-#    Updated: 2025/02/03 15:58:22 by ryada            ###   ########.fr        #
+#    Updated: 2025/02/05 14:05:08 by ryada            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,13 @@ SRC_FILES = error.c \
 			main.c \
 			rule_p.c \
 			rule_r.c \
+			rule_rr.c \
 			rule_s.c \
+			set_node.c \
 			set_stack.c \
 			tiny_sort.c \
-			turk.c \
+			turk_sort.c \
+			turk_util.c \
 			update_node.c \
 			update_stack.c \
 			util.c
