@@ -6,7 +6,7 @@
 /*   By: ryada <ryada@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:27:00 by ryada             #+#    #+#             */
-/*   Updated: 2025/02/05 13:31:49 by ryada            ###   ########.fr       */
+/*   Updated: 2025/02/11 08:19:53 by ryada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,11 @@ void	ft_update_mid(t_stack **stack)
 
 void	ft_update_node(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_update_target_a(stack_a, stack_b);
-	ft_update_target_b(stack_a, stack_b);
+	if ((*stack_a)-> size >= 3 && (*stack_b) && (*stack_b)->size > 0)
+	{
+		ft_update_target_a(stack_a, stack_b);
+		ft_update_target_b(stack_a, stack_b);
+	}
 	ft_update_index(stack_a);
 	ft_update_index(stack_b);
 	ft_update_mid(stack_a);
